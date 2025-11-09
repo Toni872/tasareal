@@ -8,8 +8,14 @@ class FinancialCalculator {
         this.amortizationSection = document.getElementById('amortizationSection');
         this.amortizationTable = document.getElementById('amortizationTable');
         this.comparisonContainer = document.getElementById('comparisonContainer');
+        this.bankRatesContainer = document.getElementById('bankRatesContainer');
+        this.chartsSection = document.getElementById('chartsSection');
+        this.chartContainer = document.getElementById('chartContainer');
+        this.refinancingSection = document.getElementById('refinancingSection');
+        this.refinancingResults = document.getElementById('refinancingResults');
+        this.currentChart = null;
         this.comparisons = [];
-        
+
         this.init();
     }
 
@@ -32,6 +38,18 @@ class FinancialCalculator {
             this.downloadCSV();
         });
 
+        document.getElementById('showAmortizationChart').addEventListener('click', () => {
+            this.showAmortizationChart();
+        });
+
+        document.getElementById('showComparisonChart').addEventListener('click', () => {
+            this.showComparisonChart();
+        });
+
+        document.getElementById('calculateRefinancing').addEventListener('click', () => {
+            this.calculateRefinancing();
+        });
+
         // Auto-calculate on input change
         this.form.querySelectorAll('input, select').forEach(input => {
             input.addEventListener('input', () => {
@@ -40,6 +58,9 @@ class FinancialCalculator {
                 }
             });
         });
+
+        // Load bank rates on page load
+        this.loadBankRates();
     }
 
     showLoading() {
@@ -85,13 +106,37 @@ class FinancialCalculator {
             tna: parseFloat(document.getElementById('tna').value) / 100,
             plazoMeses: plazoMeses,
             frecuencia: parseInt(document.getElementById('frecuencia').value),
-            sistema: document.getElementById('sistema').value
+            sistema: document.getElementById('sistema').value,
+            // Costos adicionales para CFT
+            comisionApertura: parseFloat(document.getElementById('comisionApertura').value) || 0,
+            seguroVida: parseFloat(document.getElementById('seguroVida').value) || 0,
+            seguroDesempleo: parseFloat(document.getElementById('seguroDesempleo').value) || 0,
+            otrosGastos: parseFloat(document.getElementById('otrosGastos').value) || 0
         };
     }
 
     calcularTEA(tna, frecuencia) {
         // TEA = (1 + TNA/n)^n - 1
         return Math.pow(1 + tna / frecuencia, frecuencia) - 1;
+    }
+
+    calcularCFT(data, tea, totalIntereses) {
+        // CFT considera todos los costos del crédito
+        const costosTotales = totalIntereses +
+                             data.comisionApertura +
+                             (data.seguroVida * (data.plazoMeses / 12)) +
+                             (data.seguroDesempleo * (data.plazoMeses / 12)) +
+                             data.otrosGastos;
+
+        // CFT = (costosTotales / monto) / (plazo en años) * 100
+        const plazoAnios = data.plazoMeses / 12;
+        const cft = (costosTotales / data.monto) / plazoAnios * 100;
+
+        return {
+            cft: cft,
+            costosTotales: costosTotales,
+            costoPorcentaje: (costosTotales / data.monto) * 100
+        };
     }
 
     calcularCuotaFrances(monto, tea, plazoMeses) {
@@ -170,18 +215,32 @@ class FinancialCalculator {
         
         const totalPagar = tablaAmortizacion.reduce((sum, row) => sum + row.cuota, 0);
         const totalIntereses = totalPagar - data.monto;
-        
-        this.displayResults({
+
+        // Calcular CFT si hay costos adicionales
+        const cftData = this.calcularCFT(data, tea, totalIntereses);
+
+        const results = {
             monto: data.monto,
             tna: data.tna * 100,
             tea: tea * 100,
+            cft: cftData.cft,
+            costosTotales: cftData.costosTotales,
+            costoPorcentaje: cftData.costoPorcentaje,
             plazoMeses: data.plazoMeses,
             cuotaMensual,
             totalPagar,
             totalIntereses,
             sistema: data.sistema,
-            tablaAmortizacion
-        });
+            tablaAmortizacion,
+            // Datos de costos adicionales
+            comisionApertura: data.comisionApertura,
+            seguroVida: data.seguroVida,
+            seguroDesempleo: data.seguroDesempleo,
+            otrosGastos: data.otrosGastos
+        };
+
+        this.displayResults(results);
+        this.showChartsSection(results);
     }
 
     displayResults(results) {
@@ -209,6 +268,35 @@ class FinancialCalculator {
                     <div class="bg-green-50 p-4 rounded-xl border-2 border-green-200">
                         <p class="text-xs text-green-600 font-semibold mb-1">TASA EFECTIVA</p>
                         <p class="text-2xl font-bold text-green-900">${results.tea.toFixed(2)}%</p>
+                    </div>
+                </div>
+
+                <!-- CFT (Costo Financiero Total) -->
+                <div class="bg-gradient-to-r from-red-50 to-orange-50 p-6 rounded-xl border-2 border-red-200">
+                    <div class="text-center">
+                        <p class="text-sm font-semibold mb-2 text-red-700">COSTO FINANCIERO TOTAL (CFT)</p>
+                        <p class="text-4xl font-bold mb-2 text-red-900 animate-count">${results.cft.toFixed(2)}%</p>
+                        <div class="grid grid-cols-2 gap-4 mt-4 text-sm">
+                            <div class="bg-white bg-opacity-50 p-3 rounded-lg">
+                                <p class="text-red-600 font-semibold">Total a pagar</p>
+                                <p class="text-2xl font-bold text-red-900">$${this.formatNumber(results.costosTotales)}</p>
+                            </div>
+                            <div class="bg-white bg-opacity-50 p-3 rounded-lg">
+                                <p class="text-red-600 font-semibold">Costo total</p>
+                                <p class="text-2xl font-bold text-red-900">${results.costoPorcentaje.toFixed(1)}%</p>
+                            </div>
+                        </div>
+                        ${results.comisionApertura > 0 || results.seguroVida > 0 || results.seguroDesempleo > 0 || results.otrosGastos > 0 ?
+                            `<div class="mt-4 text-xs text-red-600 bg-white bg-opacity-30 p-3 rounded-lg">
+                                <p class="font-semibold mb-1">Costos incluidos:</p>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    ${results.comisionApertura > 0 ? `<span>Comisión: $${this.formatNumber(results.comisionApertura)}</span>` : ''}
+                                    ${results.seguroVida > 0 ? `<span>Seguro vida: $${this.formatNumber(results.seguroVida)}/año</span>` : ''}
+                                    ${results.seguroDesempleo > 0 ? `<span>Seguro desempleo: $${this.formatNumber(results.seguroDesempleo)}/año</span>` : ''}
+                                    ${results.otrosGastos > 0 ? `<span>Otros: $${this.formatNumber(results.otrosGastos)}</span>` : ''}
+                                </div>
+                            </div>`
+                            : ''}
                     </div>
                 </div>
 
@@ -348,10 +436,13 @@ class FinancialCalculator {
             cuotaMensual = tabla[0].cuota;
         }
 
-        const totalPagar = data.sistema === 'frances' 
+        const totalPagar = data.sistema === 'frances'
             ? cuotaMensual * data.plazoMeses
             : this.calcularAmortizacionAleman(data.monto, tea, data.plazoMeses)
                 .reduce((sum, row) => sum + row.cuota, 0);
+
+        const totalIntereses = totalPagar - data.monto;
+        const cftData = this.calcularCFT(data, tea, totalIntereses);
 
         this.comparisons.push({
             id: Date.now(),
@@ -359,10 +450,17 @@ class FinancialCalculator {
             monto: data.monto,
             tna: data.tna * 100,
             tea: tea * 100,
+            cft: cftData.cft,
+            costosTotales: cftData.costosTotales,
             plazoMeses: data.plazoMeses,
             cuotaMensual,
             totalPagar,
-            sistema: data.sistema
+            sistema: data.sistema,
+            // Costos adicionales
+            comisionApertura: data.comisionApertura,
+            seguroVida: data.seguroVida,
+            seguroDesempleo: data.seguroDesempleo,
+            otrosGastos: data.otrosGastos
         });
 
         this.displayComparisons();
@@ -412,6 +510,11 @@ class FinancialCalculator {
                             <p class="text-2xl font-bold text-purple-900">${offer.tea.toFixed(2)}%</p>
                         </div>
 
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="text-xs text-red-600 font-semibold mb-1">CFT</p>
+                            <p class="text-2xl font-bold text-red-900">${offer.cft.toFixed(2)}%</p>
+                        </div>
+
                         <div class="flex justify-between text-sm">
                             <span class="text-gray-600">TNA</span>
                             <span class="font-semibold text-gray-900">${offer.tna.toFixed(2)}%</span>
@@ -447,23 +550,52 @@ class FinancialCalculator {
         if (this.comparisons.length > 1) {
             const maxTEA = Math.max(...this.comparisons.map(o => o.tea));
             const minTEA = Math.min(...this.comparisons.map(o => o.tea));
-            const diferencia = maxTEA - minTEA;
+            const diferenciaTEA = maxTEA - minTEA;
+
+            const maxCFT = Math.max(...this.comparisons.map(o => o.cft));
+            const minCFT = Math.min(...this.comparisons.map(o => o.cft));
+            const diferenciaCFT = maxCFT - minCFT;
+
+            const mejorOfertaTEA = this.comparisons.find(o => o.tea === minTEA);
+            const mejorOfertaCFT = this.comparisons.find(o => o.cft === minCFT);
 
             html += `
                 <div class="mt-6 bg-blue-50 border-2 border-blue-200 p-6 rounded-xl">
                     <h4 class="font-bold text-blue-900 mb-3">📊 Análisis Comparativo</h4>
-                    <div class="grid md:grid-cols-3 gap-4 text-sm">
-                        <div>
-                            <p class="text-blue-700">Mejor TEA</p>
-                            <p class="text-2xl font-bold text-blue-900">${minTEA.toFixed(2)}%</p>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm">
+                        <div class="bg-white bg-opacity-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-blue-900 mb-2">Por TEA (Tasa Efectiva)</h5>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-blue-700">Mejor:</span>
+                                    <span class="font-bold text-blue-900">${minTEA.toFixed(2)}% (${mejorOfertaTEA.nombre})</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-blue-700">Peor:</span>
+                                    <span class="font-bold text-blue-900">${maxTEA.toFixed(2)}%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-blue-700">Diferencia:</span>
+                                    <span class="font-bold text-red-600">${diferenciaTEA.toFixed(2)}%</span>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="text-blue-700">Peor TEA</p>
-                            <p class="text-2xl font-bold text-blue-900">${maxTEA.toFixed(2)}%</p>
-                        </div>
-                        <div>
-                            <p class="text-blue-700">Diferencia</p>
-                            <p class="text-2xl font-bold text-red-600">${diferencia.toFixed(2)}%</p>
+                        <div class="bg-white bg-opacity-50 p-4 rounded-lg">
+                            <h5 class="font-semibold text-red-900 mb-2">Por CFT (Costo Total)</h5>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span class="text-red-700">Mejor:</span>
+                                    <span class="font-bold text-red-900">${minCFT.toFixed(2)}% (${mejorOfertaCFT.nombre})</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-red-700">Peor:</span>
+                                    <span class="font-bold text-red-900">${maxCFT.toFixed(2)}%</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span class="text-red-700">Diferencia:</span>
+                                    <span class="font-bold text-red-600">${diferenciaCFT.toFixed(2)}%</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -504,16 +636,380 @@ class FinancialCalculator {
         window.URL.revokeObjectURL(url);
     }
 
+    showChartsSection(results) {
+        this.chartsSection.classList.remove('hidden');
+        this.chartsSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        this.lastResults = results;
+        this.showAmortizationChart(); // Mostrar gráfico de amortización por defecto
+    }
+
+    showAmortizationChart() {
+        // Destruir gráfico anterior si existe
+        if (this.currentChart) {
+            this.currentChart.destroy();
+        }
+
+        const ctx = document.getElementById('amortizationChart').getContext('2d');
+
+        // Preparar datos para el gráfico
+        const labels = [];
+        const capitalData = [];
+        const interesData = [];
+        const saldoData = [];
+
+        this.lastResults.tablaAmortizacion.forEach((row, index) => {
+            if (index < 24) { // Mostrar máximo 24 meses para legibilidad
+                labels.push(`Mes ${index + 1}`);
+                capitalData.push(row.amortizacion);
+                interesData.push(row.interes);
+                saldoData.push(row.saldo);
+            }
+        });
+
+        this.currentChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Interés',
+                        data: interesData,
+                        backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Capital',
+                        data: capitalData,
+                        backgroundColor: 'rgba(34, 197, 94, 0.8)',
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Composición de Pagos Mensuales',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': $' + calculator.formatNumber(context.parsed.y);
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        stacked: true,
+                    },
+                    y: {
+                        stacked: true,
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + calculator.formatNumber(value);
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    showComparisonChart() {
+        // Destruir gráfico anterior si existe
+        if (this.currentChart) {
+            this.currentChart.destroy();
+        }
+
+        if (this.comparisons.length === 0) {
+            this.chartContainer.innerHTML = `
+                <div class="text-center py-12">
+                    <p class="text-gray-500">Agrega ofertas al comparador para ver el gráfico</p>
+                </div>
+            `;
+            return;
+        }
+
+        const ctx = document.getElementById('amortizationChart').getContext('2d');
+
+        const labels = this.comparisons.map(offer => offer.nombre);
+        const teaData = this.comparisons.map(offer => offer.tea);
+        const cftData = this.comparisons.map(offer => offer.cft);
+        const cuotaData = this.comparisons.map(offer => offer.cuotaMensual);
+
+        this.currentChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'TEA (%)',
+                        data: teaData,
+                        backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(59, 130, 246, 1)'
+                    },
+                    {
+                        label: 'CFT (%)',
+                        data: cftData,
+                        backgroundColor: 'rgba(239, 68, 68, 0.2)',
+                        borderColor: 'rgba(239, 68, 68, 1)',
+                        borderWidth: 2,
+                        pointBackgroundColor: 'rgba(239, 68, 68, 1)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Comparación de Ofertas',
+                        font: {
+                            size: 16,
+                            weight: 'bold'
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.r.toFixed(2) + '%';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    calculateRefinancing() {
+        // Obtener datos del formulario
+        const montoPendiente = parseFloat(document.getElementById('refinancingMontoPendiente').value);
+        const tnaActual = parseFloat(document.getElementById('refinancingTnaActual').value) / 100;
+        const mesesRestantes = parseInt(document.getElementById('refinancingMesesRestantes').value);
+        const tnaNueva = parseFloat(document.getElementById('refinancingTnaNueva').value) / 100;
+        const costosRefinanciamiento = parseFloat(document.getElementById('refinancingCostos').value) || 0;
+        const mantenerPlazo = document.getElementById('refinancingMantenerPlazo').checked;
+
+        // Calcular TEA actual y nueva
+        const teaActual = this.calcularTEA(tnaActual, 12); // Asumimos capitalización mensual
+        const teaNueva = this.calcularTEA(tnaNueva, 12);
+
+        // Calcular cuota actual (usando sistema francés para simplificar)
+        const cuotaActual = this.calcularCuotaFrances(montoPendiente, teaActual, mesesRestantes);
+
+        // Calcular total que se pagaría con crédito actual
+        const totalActual = cuotaActual * mesesRestantes;
+        const interesesActual = totalActual - montoPendiente;
+
+        // Calcular nuevo crédito
+        const mesesNuevo = mantenerPlazo ? mesesRestantes : mesesRestantes; // Por ahora mantenemos el plazo
+        const cuotaNueva = this.calcularCuotaFrances(montoPendiente, teaNueva, mesesNuevo);
+        const totalNuevo = cuotaNueva * mesesNuevo + costosRefinanciamiento;
+        const interesesNuevo = totalNuevo - montoPendiente - costosRefinanciamiento;
+
+        // Calcular ahorro
+        const ahorroTotal = totalActual - totalNuevo;
+        const ahorroMensual = cuotaActual - cuotaNueva;
+        const ahorroPorcentaje = (ahorroTotal / totalActual) * 100;
+
+        // Calcular meses para recuperar costos
+        const mesesRecuperacion = costosRefinanciamiento > 0 ? Math.ceil(costosRefinanciamiento / ahorroMensual) : 0;
+
+        // Mostrar resultados
+        this.showRefinancingResults({
+            cuotaActual,
+            cuotaNueva,
+            ahorroMensual,
+            ahorroTotal,
+            ahorroPorcentaje,
+            totalActual,
+            interesesActual,
+            teaActual: teaActual * 100,
+            totalNuevo,
+            interesesNuevo,
+            teaNueva: teaNueva * 100,
+            mesesRecuperacion,
+            costosRefinanciamiento
+        });
+    }
+
+    showRefinancingResults(results) {
+        // Mostrar sección de resultados
+        this.refinancingResults.classList.remove('hidden');
+
+        // Actualizar valores
+        document.getElementById('refinancingAhorroTotal').textContent = '$' + this.formatNumber(results.ahorroTotal);
+        document.getElementById('refinancingAhorroPorcentaje').textContent =
+            results.ahorroPorcentaje.toFixed(1) + '% menos intereses';
+
+        document.getElementById('refinancingCuotaActual').textContent = '$' + this.formatNumber(results.cuotaActual);
+        document.getElementById('refinancingNuevaCuota').textContent = '$' + this.formatNumber(results.cuotaNueva);
+        document.getElementById('refinancingAhorroMensual').textContent = '$' + this.formatNumber(results.ahorroMensual);
+
+        document.getElementById('refinancingTotalActual').textContent = '$' + this.formatNumber(results.totalActual);
+        document.getElementById('refinancingInteresesActual').textContent = '$' + this.formatNumber(results.interesesActual);
+        document.getElementById('refinancingTeaActual').textContent = results.teaActual.toFixed(2) + '%';
+
+        document.getElementById('refinancingTotalNuevo').textContent = '$' + this.formatNumber(results.totalNuevo);
+        document.getElementById('refinancingInteresesNuevo').textContent = '$' + this.formatNumber(results.interesesNuevo);
+        document.getElementById('refinancingTeaNueva').textContent = results.teaNueva.toFixed(2) + '%';
+        document.getElementById('refinancingRecuperacion').textContent = results.mesesRecuperacion + ' meses';
+
+        // Scroll suave a resultados
+        this.refinancingResults.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
     formatNumber(num) {
         return new Intl.NumberFormat('es-ES', {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         }).format(num);
     }
+
+    loadBankRates() {
+        // Simular API de tasas bancarias (en producción se conectaría a una API real)
+        const bankRates = [
+            { country: 'México', banks: [
+                { name: 'BBVA México', personal: 18.5, hipotecario: 9.2, lastUpdate: '2025-01-15' },
+                { name: 'Banorte', personal: 19.8, hipotecario: 9.8, lastUpdate: '2025-01-15' },
+                { name: 'Santander México', personal: 17.9, hipotecario: 8.9, lastUpdate: '2025-01-15' }
+            ]},
+            { country: 'Argentina', banks: [
+                { name: 'Banco Nación', personal: 85.0, hipotecario: 45.0, lastUpdate: '2025-01-15' },
+                { name: 'Banco Provincia', personal: 78.0, hipotecario: 42.0, lastUpdate: '2025-01-15' },
+                { name: 'ICBC', personal: 82.0, hipotecario: 48.0, lastUpdate: '2025-01-15' }
+            ]},
+            { country: 'Colombia', banks: [
+                { name: 'Bancolombia', personal: 24.5, hipotecario: 12.8, lastUpdate: '2025-01-15' },
+                { name: 'Davivienda', personal: 25.2, hipotecario: 13.1, lastUpdate: '2025-01-15' },
+                { name: 'BBVA Colombia', personal: 23.8, hipotecario: 12.5, lastUpdate: '2025-01-15' }
+            ]},
+            { country: 'Perú', banks: [
+                { name: 'BCP', personal: 22.5, hipotecario: 8.9, lastUpdate: '2025-01-15' },
+                { name: 'Interbank', personal: 23.1, hipotecario: 9.2, lastUpdate: '2025-01-15' },
+                { name: 'Scotiabank', personal: 21.8, hipotecario: 8.7, lastUpdate: '2025-01-15' }
+            ]},
+            { country: 'Chile', banks: [
+                { name: 'Banco Estado', personal: 18.5, hipotecario: 4.8, lastUpdate: '2025-01-15' },
+                { name: 'Santander Chile', personal: 19.2, hipotecario: 5.1, lastUpdate: '2025-01-15' },
+                { name: 'BCI', personal: 17.8, hipotecario: 4.9, lastUpdate: '2025-01-15' }
+            ]},
+            { country: 'Ecuador', banks: [
+                { name: 'Banco Pichincha', personal: 16.5, hipotecario: 9.2, lastUpdate: '2025-01-15' },
+                { name: 'Banco Guayaquil', personal: 17.1, hipotecario: 9.5, lastUpdate: '2025-01-15' },
+                { name: 'Produbanco', personal: 15.8, hipotecario: 8.9, lastUpdate: '2025-01-15' }
+            ]},
+            { country: 'Centroamérica', banks: [
+                { name: 'BAC Credomatic', personal: 28.5, hipotecario: 8.9, lastUpdate: '2025-01-15' },
+                { name: 'Banco Promerica', personal: 29.2, hipotecario: 9.1, lastUpdate: '2025-01-15' },
+                { name: 'Banco Cuscatlán', personal: 27.8, hipotecario: 8.7, lastUpdate: '2025-01-15' }
+            ]}
+        ];
+
+        this.renderBankRates(bankRates);
+    }
+
+    renderBankRates(bankRates) {
+        this.bankRatesContainer.innerHTML = '';
+
+        bankRates.forEach(country => {
+            const countryCard = document.createElement('div');
+            countryCard.className = 'bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-100 hover:shadow-lg transition-all duration-300';
+
+            const countryTitle = document.createElement('h4');
+            countryTitle.className = 'font-bold text-lg text-gray-800 mb-4 flex items-center';
+            countryTitle.innerHTML = `
+                <span class="text-blue-600 mr-2">🏦</span>
+                ${country.country}
+            `;
+
+            const banksList = document.createElement('div');
+            banksList.className = 'space-y-3';
+
+            country.banks.forEach(bank => {
+                const bankItem = document.createElement('div');
+                bankItem.className = 'bg-white p-4 rounded-lg shadow-sm border border-gray-100';
+
+                bankItem.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <span class="font-semibold text-gray-800">${bank.name}</span>
+                        <span class="text-xs text-gray-500">TNA</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                            <span class="text-gray-600">Personal:</span>
+                            <span class="font-semibold text-blue-600">${bank.personal}%</span>
+                        </div>
+                        <div>
+                            <span class="text-gray-600">Hipotecario:</span>
+                            <span class="font-semibold text-green-600">${bank.hipotecario}%</span>
+                        </div>
+                    </div>
+                `;
+
+                banksList.appendChild(bankItem);
+            });
+
+            countryCard.appendChild(countryTitle);
+            countryCard.appendChild(banksList);
+            this.bankRatesContainer.appendChild(countryCard);
+        });
+    }
 }
 
 // Inicializar calculadora
 const calculator = new FinancialCalculator();
+
+// Registrar Service Worker para PWA
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('[SW] Service Worker registered:', registration.scope);
+
+                // Verificar si hay una nueva versión disponible
+                registration.addEventListener('updatefound', () => {
+                    const newWorker = registration.installing;
+                    if (newWorker) {
+                        newWorker.addEventListener('statechange', () => {
+                            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                // Nueva versión disponible
+                                if (confirm('Hay una nueva versión disponible. ¿Quieres actualizar?')) {
+                                    newWorker.postMessage({ type: 'SKIP_WAITING' });
+                                    window.location.reload();
+                                }
+                            }
+                        });
+                    }
+                });
+            })
+            .catch((error) => {
+                console.log('[SW] Service Worker registration failed:', error);
+            });
+    });
+}
 
 // Calcular automáticamente al cargar
 window.addEventListener('load', () => {

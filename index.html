@@ -12,7 +12,19 @@
     <meta property="og:image" content="/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <title>Calculadora TEA vs TNA - Tasa Efectiva y Nominal para Créditos | TasaReal</title>
-    
+
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="TasaReal">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="msapplication-TileColor" content="#667eea">
+
+    <!-- PWA Links -->
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMzIiIGZpbGw9IiM2NjdFRUEiLz4KPHBhdGggZD0iTTEyIDEyOFY4MEMxMiA3Ljc3NzE0IDEyLjQ0NzcgNyAxMyA3SDE1QzE1LjU1MjMgNyAxNiA3LjQ0NzcxIDE2IDhWMjgwQzE2IDI4MC41NTIzIDE1LjU1MjMgMjgxIDE1IDI4MUhDMTMuNDQ3NyAyODEgMTMgMjgwLjU1MjMgMTMgMjgwVjEyOCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4IDI4MFYxNEMxOCA5Ljc3NzE0IDE4LjQ0NzcgOSA5IDlIMjFDMjEuNTUyMyA5IDIyIDkuNDQ3NzEgMjIgMTRWMjgwQzIyIDI4MC41NTIzIDIxLjU1MjMgMjgxIDIxIDI4MUgxOUMxNy40NDc3IDI4MSAxNyAyODAuNTUyMyAxNyAyODBWMjgwIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjQgMjgwVjE4QzI0IDE3Ljc3NzE0IDI0LjQ0NzcgMTcgMjUgMTdIMjdDMjcuNTUyMyAxNyAyOCAxNy40NDc3MSAyOCAxOFYyODBDMjggMjgwLjU1MjMgMjcuNTUyMyAyODEgMjcgMjgxSDI1QzI0LjQ0NzcgMjgxIDI0IDI4MC41NTIzIDI0IDI4MFYyODAiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iOCIgcj0iNCIgZmlsbD0iI0ZGRDAwMCIvPgo8L3N2Zz4K">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -141,7 +153,17 @@
             transform: translateY(-4px);
             box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
         }
+
+        /* Chart.js custom styles */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
     </style>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-gray-50">
     
@@ -306,6 +328,91 @@
                             </select>
                         </div>
 
+                        <!-- Costos Adicionales para CFT -->
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-gray-800 mb-4 flex items-center">
+                                <span class="text-blue-600 mr-2">💰</span>
+                                Costos Adicionales (para CFT)
+                            </h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                                <!-- Comisión de Apertura -->
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        Comisión de Apertura
+                                    </label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
+                                        <input
+                                            type="number"
+                                            id="comisionApertura"
+                                            value="0"
+                                            min="0"
+                                            step="10"
+                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- Seguro de Vida -->
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        Seguro de Vida (anual)
+                                    </label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
+                                        <input
+                                            type="number"
+                                            id="seguroVida"
+                                            value="0"
+                                            min="0"
+                                            step="10"
+                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- Seguro de Desempleo -->
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        Seguro Desempleo (anual)
+                                    </label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
+                                        <input
+                                            type="number"
+                                            id="seguroDesempleo"
+                                            value="0"
+                                            min="0"
+                                            step="10"
+                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                        >
+                                    </div>
+                                </div>
+
+                                <!-- Otros Gastos -->
+                                <div>
+                                    <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                        Otros Gastos
+                                    </label>
+                                    <div class="relative">
+                                        <span class="absolute left-4 top-3 text-gray-500 font-semibold">$</span>
+                                        <input
+                                            type="number"
+                                            id="otrosGastos"
+                                            value="0"
+                                            min="0"
+                                            step="10"
+                                            class="w-full pl-8 pr-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-600 mt-3">
+                                Estos costos se incluyen en el cálculo del CFT (Costo Financiero Total)
+                            </p>
+                        </div>
+
                         <!-- Calculate Button -->
                         <button 
                             type="submit"
@@ -333,6 +440,23 @@
                             <p class="text-lg">Completa el formulario para ver los resultados</p>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Bank Rates Section -->
+            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift animate-fade-in">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                    <span class="inline-block mr-2">▸</span>Tasas de Referencia Bancarias
+                </h3>
+                <div class="text-sm text-gray-600 mb-4">
+                    Tasas promedio actuales en Latinoamérica (actualizado mensualmente)
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="bankRatesContainer">
+                    <!-- Los bancos se cargarán dinámicamente -->
+                </div>
+                <div class="mt-4 text-xs text-gray-500">
+                    * Las tasas son referenciales y pueden variar según el banco, perfil del cliente y condiciones del mercado.
+                    Siempre verifica con tu banco para obtener las tasas exactas.
                 </div>
             </div>
 
@@ -368,6 +492,225 @@
                     </button>
                 </div>
                 <div id="amortizationTable" class="overflow-x-auto"></div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift hidden" id="chartsSection">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-2xl font-bold text-gray-800">
+                        <span class="inline-block mr-2">▸</span>Gráficos Interactivos
+                    </h3>
+                    <div class="flex space-x-2">
+                        <button
+                            id="showAmortizationChart"
+                            class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-200 transition font-semibold"
+                        >
+                            Amortización
+                        </button>
+                        <button
+                            id="showComparisonChart"
+                            class="bg-green-100 text-green-700 px-4 py-2 rounded-lg hover:bg-green-200 transition font-semibold"
+                        >
+                            Comparación
+                        </button>
+                    </div>
+                </div>
+
+                <div id="chartContainer" class="bg-gray-50 p-6 rounded-xl">
+                    <div class="chart-container">
+                        <canvas id="amortizationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Refinancing Calculator -->
+            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift" id="refinancingSection">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6">
+                    <span class="inline-block mr-2">🔄</span>Calculadora de Refinanciamiento
+                </h3>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Crédito Actual -->
+                    <div class="bg-red-50 p-6 rounded-xl border border-red-200">
+                        <h4 class="font-bold text-red-900 mb-4 flex items-center">
+                            <span class="text-red-600 mr-2">📊</span>
+                            Crédito Actual
+                        </h4>
+                        <div class="space-y-4">
+
+                            <!-- Monto Pendiente -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Monto Pendiente ($)
+                                </label>
+                                <input
+                                    type="number"
+                                    id="refinancingMontoPendiente"
+                                    value="50000"
+                                    min="100"
+                                    step="100"
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                    required
+                                >
+                            </div>
+
+                            <!-- TNA Actual -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    TNA Actual (%)
+                                </label>
+                                <input
+                                    type="number"
+                                    id="refinancingTnaActual"
+                                    value="28"
+                                    min="0"
+                                    max="200"
+                                    step="0.1"
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Meses Restantes -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Meses Restantes
+                                </label>
+                                <input
+                                    type="number"
+                                    id="refinancingMesesRestantes"
+                                    value="24"
+                                    min="1"
+                                    max="360"
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                    required
+                                >
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nuevo Crédito -->
+                    <div class="bg-green-50 p-6 rounded-xl border border-green-200">
+                        <h4 class="font-bold text-green-900 mb-4 flex items-center">
+                            <span class="text-green-600 mr-2">💡</span>
+                            Nuevo Crédito
+                        </h4>
+                        <div class="space-y-4">
+
+                            <!-- TNA Nueva -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    TNA Nueva (%)
+                                </label>
+                                <input
+                                    type="number"
+                                    id="refinancingTnaNueva"
+                                    value="18"
+                                    min="0"
+                                    max="200"
+                                    step="0.1"
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                    required
+                                >
+                            </div>
+
+                            <!-- Costos de Refinanciamiento -->
+                            <div>
+                                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                                    Costos de Refinanciamiento ($)
+                                </label>
+                                <input
+                                    type="number"
+                                    id="refinancingCostos"
+                                    value="1500"
+                                    min="0"
+                                    step="50"
+                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
+                                >
+                            </div>
+
+                            <!-- Mantener Plazo -->
+                            <div class="flex items-center">
+                                <input
+                                    type="checkbox"
+                                    id="refinancingMantenerPlazo"
+                                    checked
+                                    class="mr-3"
+                                >
+                                <label for="refinancingMantenerPlazo" class="text-sm font-semibold text-gray-700">
+                                    Mantener mismo plazo
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón Calcular -->
+                <div class="text-center mt-6">
+                    <button
+                        id="calculateRefinancing"
+                        class="bg-gradient-to-r from-green-600 to-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:from-green-700 hover:to-blue-700 transition transform hover:scale-105 shadow-lg"
+                    >
+                        Calcular Refinanciamiento →
+                    </button>
+                </div>
+
+                <!-- Resultados -->
+                <div id="refinancingResults" class="mt-8 space-y-6 hidden">
+                    <!-- Ahorro Total -->
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-6 rounded-xl text-center">
+                        <h4 class="text-lg font-semibold mb-2">💰 Ahorro Total Estimado</h4>
+                        <p class="text-4xl font-bold" id="refinancingAhorroTotal">$0</p>
+                        <p class="text-sm opacity-90" id="refinancingAhorroPorcentaje">0% menos intereses</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Cuota Actual -->
+                        <div class="bg-red-50 p-4 rounded-xl border-2 border-red-200">
+                            <p class="text-xs text-red-600 font-semibold mb-1">CUOTA ACTUAL</p>
+                            <p class="text-2xl font-bold text-red-900" id="refinancingCuotaActual">$0</p>
+                            <p class="text-xs text-red-600 mt-1">por mes</p>
+                        </div>
+
+                        <!-- Nueva Cuota -->
+                        <div class="bg-green-50 p-4 rounded-xl border-2 border-green-200">
+                            <p class="text-xs text-green-600 font-semibold mb-1">NUEVA CUOTA</p>
+                            <p class="text-2xl font-bold text-green-900" id="refinancingNuevaCuota">$0</p>
+                            <p class="text-xs text-green-600 mt-1">por mes</p>
+                        </div>
+
+                        <!-- Ahorro Mensual -->
+                        <div class="bg-blue-50 p-4 rounded-xl border-2 border-blue-200">
+                            <p class="text-xs text-blue-600 font-semibold mb-1">AHORRO MENSUAL</p>
+                            <p class="text-2xl font-bold text-blue-900" id="refinancingAhorroMensual">$0</p>
+                            <p class="text-xs text-blue-600 mt-1">por mes</p>
+                        </div>
+                    </div>
+
+                    <!-- Análisis Detallado -->
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h4 class="font-bold text-gray-800 mb-4">📈 Análisis Detallado</h4>
+                        <div class="grid md:grid-cols-2 gap-6 text-sm">
+                            <div>
+                                <h5 class="font-semibold text-gray-700 mb-2">Crédito Actual</h5>
+                                <div class="space-y-1 text-gray-600">
+                                    <p>Total a pagar: <span id="refinancingTotalActual" class="font-semibold text-red-600">$0</span></p>
+                                    <p>Intereses totales: <span id="refinancingInteresesActual" class="font-semibold text-red-600">$0</span></p>
+                                    <p>TEA actual: <span id="refinancingTeaActual" class="font-semibold text-red-600">0%</span></p>
+                                </div>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-gray-700 mb-2">Nuevo Crédito</h5>
+                                <div class="space-y-1 text-gray-600">
+                                    <p>Total a pagar: <span id="refinancingTotalNuevo" class="font-semibold text-green-600">$0</span></p>
+                                    <p>Intereses totales: <span id="refinancingInteresesNuevo" class="font-semibold text-green-600">$0</span></p>
+                                    <p>TEA nueva: <span id="refinancingTeaNueva" class="font-semibold text-green-600">0%</span></p>
+                                    <p>Recuperación costos: <span id="refinancingRecuperacion" class="font-semibold text-blue-600">0 meses</span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -514,8 +857,9 @@
                     <h4 class="font-bold mb-4">Enlaces Útiles</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="#calculadora" class="hover:text-white transition">Calculadora</a></li>
-                        <li><a href="#guia" class="hover:text-white transition">Guía TEA vs TNA</a></li>
                         <li><a href="#comparador" class="hover:text-white transition">Comparador</a></li>
+                        <li><a href="#refinancing" class="hover:text-white transition">Refinanciamiento</a></li>
+                        <li><a href="#guia" class="hover:text-white transition">Guía TEA vs TNA</a></li>
                     </ul>
                 </div>
                 <div>
@@ -526,6 +870,16 @@
                         <li>• Colombia</li>
                         <li>• Perú</li>
                         <li>• Chile</li>
+                        <li>• Ecuador</li>
+                        <li>• Uruguay</li>
+                        <li>• Paraguay</li>
+                        <li>• Guatemala</li>
+                        <li>• Honduras</li>
+                        <li>• El Salvador</li>
+                        <li>• Nicaragua</li>
+                        <li>• Costa Rica</li>
+                        <li>• Panamá</li>
+                        <li>• República Dominicana</li>
                     </ul>
                 </div>
             </div>
