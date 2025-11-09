@@ -979,28 +979,10 @@ class FinancialCalculator {
     }
 }
 
-// Funciones de navegación
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-    // Cerrar menú móvil si está abierto
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-        toggleMobileMenu();
-    }
-}
-
-function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenu) {
-        mobileMenu.classList.toggle('hidden');
-    }
-}
-
-// Inicializar calculadora
-const calculator = new FinancialCalculator();
+// Inicializar aplicación
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('TasaReal loaded successfully');
+});
 
 // Registrar Service Worker para PWA
 if ('serviceWorker' in navigator) {
