@@ -4,446 +4,200 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TasaReal</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0f172a;
-            color: #f1f5f9;
-            margin: 0;
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .logo {
-            display: inline-flex;
-            align-items: center;
-            gap: 16px;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .logo-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        .logo-text h1 {
-            margin: 0;
-            font-size: 32px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .logo-text p {
-            margin: 4px 0 0 0;
-            font-size: 14px;
-            color: #94a3b8;
-        }
-
-        .content {
-            background: #1e293b;
-            border: 1px solid #475569;
-            border-radius: 16px;
-            padding: 32px;
-        }
-
-        .title {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 24px;
-        }
-
-        .title h2 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: 600;
-        }
-
-        .title .emoji {
-            font-size: 48px;
-            opacity: 0.2;
-        }
-
-        .subtitle {
-            color: #94a3b8;
-            margin-bottom: 32px;
-            font-size: 16px;
-        }
-
-        .country-section {
-            margin-bottom: 32px;
-        }
-
-        .country-section:not(:last-child) {
-            border-bottom: 1px solid #475569;
-            padding-bottom: 24px;
-        }
-
-        .country-name {
-            font-size: 20px;
-            font-weight: 600;
-            color: #3b82f6;
-            margin-bottom: 16px;
-        }
-
-        .banks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-        }
-
-        .bank-card {
-            background: #334155;
-            border: 1px solid #475569;
-            border-radius: 8px;
-            padding: 16px;
-            transition: all 0.2s ease;
-        }
-
-        .bank-card:hover {
-            border-color: #3b82f6;
-            transform: translateY(-2px);
-        }
-
-        .bank-name {
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-
-        .bank-label {
-            font-size: 12px;
-            color: #94a3b8;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .rates-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
-
-        .rate-item {
-            font-size: 14px;
-        }
-
-        .rate-value {
-            color: #3b82f6;
-            font-weight: 600;
-        }
-
-        .rate-value.hipotecario {
-            color: #10b981;
-        }
-
-        .disclaimer {
-            background: rgba(59, 130, 246, 0.1);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 8px;
-            padding: 16px;
-            margin-top: 32px;
-        }
-
-        .disclaimer p {
-            margin: 0;
-            font-size: 12px;
-            color: #94a3b8;
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        @media (max-width: 640px) {
-            .title {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 16px;
-            }
-
-            .title .emoji {
-                font-size: 32px;
-            }
-
-            .banks-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <div class="logo-icon">
-                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        <path d="M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="20" cy="8" r="2" fill="white"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <h1>TasaReal</h1>
-                    <p>Tasas bancarias de Latinoamérica</p>
-                </div>
-            </div>
-        </header>
+<pre>
+TasaReal
 
-        <!-- Main Content -->
-        <main class="content">
-            <div class="title">
-                <h2>▸ Tasas de Referencia Bancarias</h2>
-                <span class="emoji">🏦</span>
-            </div>
+▸Tasas de Referencia Bancarias
 
-            <p class="subtitle">Tasas promedio actuales en Latinoamérica (actualizado mensualmente)</p>
+Tasas promedio actuales en Latinoamérica (actualizado mensualmente)
 
-            <!-- México -->
-            <div class="country-section">
-                <h3 class="country-name">México</h3>
-                <div class="banks-grid">
-                    <div class="bank-card">
-                        <div class="bank-name">BBVA México</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">18.5%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.2%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Banorte</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">19.8%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.8%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Santander México</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">17.9%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+🏦
 
-            <!-- Argentina -->
-            <div class="country-section">
-                <h3 class="country-name">Argentina</h3>
-                <div class="banks-grid">
-                    <div class="bank-card">
-                        <div class="bank-name">Banco Nación</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">85%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">45%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Banco Provincia</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">78%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">42%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">ICBC</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">82%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">48%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+México
 
-            <!-- Colombia -->
-            <div class="country-section">
-                <h3 class="country-name">Colombia</h3>
-                <div class="banks-grid">
-                    <div class="bank-card">
-                        <div class="bank-name">Bancolombia</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">24.5%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">12.8%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Davivienda</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">25.2%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">13.1%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">BBVA Colombia</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">23.8%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">12.5%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+BBVA México
 
-            <!-- Perú -->
-            <div class="country-section">
-                <h3 class="country-name">Perú</h3>
-                <div class="banks-grid">
-                    <div class="bank-card">
-                        <div class="bank-name">BCP</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">22.5%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Interbank</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">23.1%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.2%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Scotiabank</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">21.8%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.7%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+TNA
 
-            <!-- Chile -->
-            <div class="country-section">
-                <h3 class="country-name">Chile</h3>
-                <div class="banks-grid">
-                    <div class="bank-card">
-                        <div class="bank-name">Banco Estado</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">18.5%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">4.8%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Santander Chile</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">19.2%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">5.1%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">BCI</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">17.8%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">4.9%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+Personal: 18.5%
 
-            <!-- Ecuador -->
-            <div class="country-section">
-                <h3 class="country-name">Ecuador</h3>
-                <div class="banks-grid">
-                    <div class="bank-card">
-                        <div class="bank-name">Banco Pichincha</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">16.5%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.2%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Banco Guayaquil</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">17.1%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.5%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Produbanco</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">15.8%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+Hipotecario: 9.2%
 
-            <!-- Centroamérica -->
-            <div class="country-section">
-                <h3 class="country-name">Centroamérica</h3>
-                <div class="banks-grid">
-                    <div class="bank-card">
-                        <div class="bank-name">BAC Credomatic</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">28.5%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Banco Promerica</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">29.2%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.1%</span></div>
-                        </div>
-                    </div>
-                    <div class="bank-card">
-                        <div class="bank-name">Banco Cuscatlán</div>
-                        <div class="bank-label">TNA</div>
-                        <div class="rates-grid">
-                            <div class="rate-item">Personal: <span class="rate-value">27.8%</span></div>
-                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.7%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+Banorte
 
-            <!-- Disclaimer -->
-            <div class="disclaimer">
-                <p>* Las tasas son referenciales y pueden variar según el banco, perfil del cliente y condiciones del mercado. Siempre verifica con tu banco para obtener las tasas exactas.</p>
-            </div>
-        </main>
-    </div>
+TNA
+
+Personal: 19.8%
+
+Hipotecario: 9.8%
+
+Santander México
+
+TNA
+
+Personal: 17.9%
+
+Hipotecario: 8.9%
+
+Argentina
+
+Banco Nación
+
+TNA
+
+Personal: 85%
+
+Hipotecario: 45%
+
+Banco Provincia
+
+TNA
+
+Personal: 78%
+
+Hipotecario: 42%
+
+ICBC
+
+TNA
+
+Personal: 82%
+
+Hipotecario: 48%
+
+Colombia
+
+Bancolombia
+
+TNA
+
+Personal: 24.5%
+
+Hipotecario: 12.8%
+
+Davivienda
+
+TNA
+
+Personal: 25.2%
+
+Hipotecario: 13.1%
+
+BBVA Colombia
+
+TNA
+
+Personal: 23.8%
+
+Hipotecario: 12.5%
+
+Perú
+
+BCP
+
+TNA
+
+Personal: 22.5%
+
+Hipotecario: 8.9%
+
+Interbank
+
+TNA
+
+Personal: 23.1%
+
+Hipotecario: 9.2%
+
+Scotiabank
+
+TNA
+
+Personal: 21.8%
+
+Hipotecario: 8.7%
+
+Chile
+
+Banco Estado
+
+TNA
+
+Personal: 18.5%
+
+Hipotecario: 4.8%
+
+Santander Chile
+
+TNA
+
+Personal: 19.2%
+
+Hipotecario: 5.1%
+
+BCI
+
+TNA
+
+Personal: 17.8%
+
+Hipotecario: 4.9%
+
+Ecuador
+
+Banco Pichincha
+
+TNA
+
+Personal: 16.5%
+
+Hipotecario: 9.2%
+
+Banco Guayaquil
+
+TNA
+
+Personal: 17.1%
+
+Hipotecario: 9.5%
+
+Produbanco
+
+TNA
+
+Personal: 15.8%
+
+Hipotecario: 8.9%
+
+Centroamérica
+
+BAC Credomatic
+
+TNA
+
+Personal: 28.5%
+
+Hipotecario: 8.9%
+
+Banco Promerica
+
+TNA
+
+Personal: 29.2%
+
+Hipotecario: 9.1%
+
+Banco Cuscatlán
+
+TNA
+
+Personal: 27.8%
+
+Hipotecario: 8.7%
+
+* Las tasas son referenciales y pueden variar según el banco, perfil del cliente y condiciones del mercado. Siempre verifica con tu banco para obtener las tasas exactas.
+</pre>
 </body>
 </html>
