@@ -3,941 +3,447 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Calculadora gratuita de Tasa Efectiva Anual (TEA) vs Tasa Nominal. Compara créditos, calcula cuotas reales y descarga tu tabla de amortización. Herramienta financiera para Latinoamérica.">
-    <meta name="keywords" content="calculadora tasa efectiva, TEA, TNA, tasa nominal, calculadora crédito, interés efectivo, comparar tasas, amortización">
-    <meta name="author" content="TasaReal">
-    <meta property="og:title" content="Calculadora TEA vs TNA - Tasa Efectiva y Nominal para Créditos">
-    <meta property="og:description" content="Calcula la tasa efectiva real de tu crédito. Compara ofertas bancarias y descubre cuánto pagarás realmente.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="/og-image.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>Calculadora TEA vs TNA - Tasa Efectiva y Nominal para Créditos | TasaReal</title>
-
-    <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#1e293b">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="TasaReal">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="msapplication-TileColor" content="#1e293b">
-
-    <!-- PWA Links -->
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMzIiIGZpbGw9IiM2NjdFRUEiLz4KPHBhdGggZD0iTTEyIDEyOFY4MEMxMiA3Ljc3NzE0IDEyLjQ0NzcgNyAxMyA3SDE1QzE1LjU1MjMgNyAxNiA3LjQ0NzcxIDE2IDhWMjgwQzE2IDI4MC41NTIzIDE1LjU1MjMgMjgxIDE1IDI4MUhDMTMuNDQ3NyAyODEgMTMgMjgwLjU1MjMgMTMgMjgwVjEyOCIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTE4IDI4MFYxNEMxOCA5Ljc3NzE0IDE4LjQ0NzcgOSA5IDlIMjFDMjEuNTUyMyA5IDIyIDkuNDQ3NzEgMjIgMTRWMjgwQzIyIDI4MC41NTIzIDIxLjU1MjMgMjgxIDIxIDI4MUgxOUMxNy40NDc3IDI4MSAxNyAyODAuNTUyMyAxNyAyODBWMjgwIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMjQgMjgwVjE4QzI0IDE3Ljc3NzE0IDI0LjQ0NzcgMTcgMjUgMTdIMjdDMjcuNTUyMyAxNyAyOCAxNy40NDc3MSAyOCAxOFYyODBDMjggMjgwLjU1MjMgMjcuNTUyMyAyODEgMjcgMjgxSDI1QzI0LjQ0NzcgMjgxIDI0IDI4MC41NTIzIDI0IDI4MFYyODAiIGZpbGw9IndoaXRlIi8+CjxjaXJjbGUgY3g9IjIwIiBjeT0iOCIgcj0iNCIgZmlsbD0iI0ZGRDAwMCIvPgo8L3N2Zz4K">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none'><rect width='40' height='40' rx='8' fill='%23667eea'/><path d='M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28' stroke='white' stroke-width='2' stroke-linecap='round'/><path d='M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28' stroke='white' stroke-width='2' stroke-linecap='round'/><path d='M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28' stroke='white' stroke-width='2' stroke-linecap='round'/><circle cx='20' cy='8' r='2' fill='%23FFD700'/></svg>">
-    
-    <!-- Schema.org markup -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Calculadora TEA vs TNA",
-      "description": "Calculadora de Tasa Efectiva Anual y Tasa Nominal para créditos en Latinoamérica",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      }
-    }
-    </script>
-    
+    <title>TasaReal</title>
     <style>
-        :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-card: #334155;
-            --bg-accent: #475569;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --primary: #3b82f6;
-            --primary-hover: #2563eb;
-            --secondary: #6366f1;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --error: #ef4444;
-            --border: #475569;
-        }
-
-        * {
-            transition: all 0.2s ease;
-        }
-
         body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-            color: var(--text-primary);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #f1f5f9;
+            margin: 0;
+            padding: 20px;
             min-height: 100vh;
         }
 
-        .dark-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            backdrop-filter: blur(10px);
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
         }
 
-        .dark-card-hover {
-            transition: all 0.3s ease;
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
         }
 
-        .dark-card-hover:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--primary);
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
         }
 
-        .glass-effect {
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .gradient-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .logo-icon svg {
+            width: 24px;
+            height: 24px;
         }
 
-        .input-dark {
-            background: var(--bg-accent);
-            border: 2px solid var(--border);
-            color: var(--text-primary);
-        }
-
-        .input-dark:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-hover);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
-        }
-
-        .btn-secondary {
-            background: var(--bg-accent);
-            color: var(--text-primary);
-            border: 1px solid var(--border);
-            padding: 10px 20px;
-            border-radius: 6px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-card);
-            border-color: var(--primary);
-        }
-
-        .text-gradient {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .logo-text h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6 0%, #6366f1 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
 
-        .animate-fade-in {
-            animation: fadeIn 0.6s ease-out;
+        .logo-text p {
+            margin: 4px 0 0 0;
+            font-size: 14px;
+            color: #94a3b8;
         }
 
-        .animate-slide-up {
-            animation: slideUp 0.5s ease-out;
+        .content {
+            background: #1e293b;
+            border: 1px solid #475569;
+            border-radius: 16px;
+            padding: 32px;
         }
 
-        .animate-scale-in {
-            animation: scaleIn 0.4s ease-out;
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .title h2 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .title .emoji {
+            font-size: 48px;
+            opacity: 0.2;
         }
 
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
+        .subtitle {
+            color: #94a3b8;
+            margin-bottom: 32px;
+            font-size: 16px;
         }
 
-        .loading-dots {
-            display: inline-block;
+        .country-section {
+            margin-bottom: 32px;
         }
 
-        .loading-dots::after {
-            content: '';
-            animation: dots 1.5s infinite;
+        .country-section:not(:last-child) {
+            border-bottom: 1px solid #475569;
+            padding-bottom: 24px;
         }
 
-        @keyframes dots {
-            0%, 20% { content: ''; }
-            40% { content: '.'; }
-            60% { content: '..'; }
-            80%, 100% { content: '...'; }
+        .country-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 16px;
         }
 
-        .chart-container {
-            position: relative;
-            height: 350px;
-            width: 100%;
+        .banks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
         }
 
-        .tab-active {
-            background: var(--primary);
-            color: white;
+        .bank-card {
+            background: #334155;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            padding: 16px;
+            transition: all 0.2s ease;
         }
 
-        .metric-card {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%);
+        .bank-card:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+        }
+
+        .bank-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        .bank-label {
+            font-size: 12px;
+            color: #94a3b8;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rates-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .rate-item {
+            font-size: 14px;
+        }
+
+        .rate-value {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .rate-value.hipotecario {
+            color: #10b981;
+        }
+
+        .disclaimer {
+            background: rgba(59, 130, 246, 0.1);
             border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 8px;
+            padding: 16px;
+            margin-top: 32px;
         }
 
-        .scroll-smooth {
-            scroll-behavior: smooth;
+        .disclaimer p {
+            margin: 0;
+            font-size: 12px;
+            color: #94a3b8;
+            text-align: center;
+            line-height: 1.4;
         }
 
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
+        @media (max-width: 640px) {
+            .title {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 16px;
+            }
 
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
+            .title .emoji {
+                font-size: 32px;
+            }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 3px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary);
+            .banks-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="bg-gray-50">
-    
-    <!-- Header -->
-    <header class="py-6">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex items-center justify-center space-x-4">
-                <div class="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center">
-                    <svg class="w-7 h-7" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12 28V20C12 19.4477 12.4477 19 13 19H15C15.5523 19 16 19.4477 16 20V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
                         <path d="M18 28V14C18 13.4477 18.4477 13 19 13H21C21.5523 13 22 13.4477 22 14V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
                         <path d="M24 28V18C24 17.4477 24.4477 17 25 17H27C27.5523 17 28 17.4477 28 18V28" stroke="white" stroke-width="2" stroke-linecap="round"/>
                         <circle cx="20" cy="8" r="2" fill="white"/>
                     </svg>
                 </div>
-                <div>
-                    <h1 class="text-3xl font-bold text-gradient">TasaReal</h1>
-                    <p class="text-secondary">Tasas bancarias de Latinoamérica</p>
+                <div class="logo-text">
+                    <h1>TasaReal</h1>
+                    <p>Tasas bancarias de Latinoamérica</p>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-8">
-        <div class="max-w-4xl mx-auto">
-            <!-- Bank Rates Section -->
-            <div class="dark-card dark-card-hover animate-fade-in">
-                <div class="p-8">
-                    <div class="flex items-center justify-between mb-8">
-                        <div>
-                            <h2 class="text-3xl font-bold mb-2">▸ Tasas de Referencia Bancarias</h2>
-                            <p class="text-secondary">Tasas promedio actuales en Latinoamérica (actualizado mensualmente)</p>
-                        </div>
-                        <div class="text-6xl opacity-20">🏦</div>
-                    </div>
-
-                    <div class="space-y-8">
-                        <!-- México -->
-                        <div class="border-b border-border pb-6">
-                            <h3 class="text-xl font-bold mb-4 text-primary">México</h3>
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">BBVA México</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">18.5%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">9.2%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banorte</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">19.8%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">9.8%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Santander México</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">17.9%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">8.9%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Argentina -->
-                        <div class="border-b border-border pb-6">
-                            <h3 class="text-xl font-bold mb-4 text-primary">Argentina</h3>
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banco Nación</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">85%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">45%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banco Provincia</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">78%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">42%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">ICBC</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">82%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">48%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Colombia -->
-                        <div class="border-b border-border pb-6">
-                            <h3 class="text-xl font-bold mb-4 text-primary">Colombia</h3>
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Bancolombia</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">24.5%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">12.8%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Davivienda</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">25.2%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">13.1%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">BBVA Colombia</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">23.8%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">12.5%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Perú -->
-                        <div class="border-b border-border pb-6">
-                            <h3 class="text-xl font-bold mb-4 text-primary">Perú</h3>
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">BCP</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">22.5%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">8.9%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Interbank</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">23.1%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">9.2%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Scotiabank</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">21.8%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">8.7%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Chile -->
-                        <div class="border-b border-border pb-6">
-                            <h3 class="text-xl font-bold mb-4 text-primary">Chile</h3>
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banco Estado</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">18.5%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">4.8%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Santander Chile</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">19.2%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">5.1%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">BCI</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">17.8%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">4.9%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Ecuador -->
-                        <div class="border-b border-border pb-6">
-                            <h3 class="text-xl font-bold mb-4 text-primary">Ecuador</h3>
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banco Pichincha</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">16.5%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">9.2%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banco Guayaquil</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">17.1%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">9.5%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Produbanco</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">15.8%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">8.9%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Centroamérica -->
-                        <div>
-                            <h3 class="text-xl font-bold mb-4 text-primary">Centroamérica</h3>
-                            <div class="grid md:grid-cols-3 gap-6">
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">BAC Credomatic</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">28.5%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">8.9%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banco Promerica</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">29.2%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">9.1%</span></div>
-                                    </div>
-                                </div>
-                                <div class="dark-card p-4">
-                                    <div class="font-semibold mb-2">Banco Cuscatlán</div>
-                                    <div class="text-sm text-secondary mb-1">TNA</div>
-                                    <div class="grid grid-cols-2 gap-2 text-sm">
-                                        <div>Personal: <span class="text-primary font-semibold">27.8%</span></div>
-                                        <div>Hipotecario: <span class="text-green-400 font-semibold">8.7%</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 p-4 bg-secondary/20 rounded-lg">
-                        <p class="text-xs text-secondary text-center">
-                            * Las tasas son referenciales y pueden variar según el banco, perfil del cliente y condiciones del mercado.
-                            Siempre verifica con tu banco para obtener las tasas exactas.
-                        </p>
-                    </div>
-                </div>
+        <!-- Main Content -->
+        <main class="content">
+            <div class="title">
+                <h2>▸ Tasas de Referencia Bancarias</h2>
+                <span class="emoji">🏦</span>
             </div>
-        </div>
-    </main>
-                    
-                    <div id="results" class="space-y-6">
-                        <div class="text-center text-gray-400 py-12">
-                            <svg class="w-24 h-24 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                            </svg>
-                            <p class="text-lg">Completa el formulario para ver los resultados</p>
+
+            <p class="subtitle">Tasas promedio actuales en Latinoamérica (actualizado mensualmente)</p>
+
+            <!-- México -->
+            <div class="country-section">
+                <h3 class="country-name">México</h3>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-name">BBVA México</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">18.5%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.2%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Banorte</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">19.8%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.8%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Santander México</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">17.9%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Bank Rates Section -->
-            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift animate-fade-in">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6">
-                    <span class="inline-block mr-2">▸</span>Tasas de Referencia Bancarias
-                </h3>
-                <div class="text-sm text-gray-600 mb-4">
-                    Tasas promedio actuales en Latinoamérica (actualizado mensualmente)
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="bankRatesContainer">
-                    <!-- Los bancos se cargarán dinámicamente -->
-                </div>
-                <div class="mt-4 text-xs text-gray-500">
-                    * Las tasas son referenciales y pueden variar según el banco, perfil del cliente y condiciones del mercado.
-                    Siempre verifica con tu banco para obtener las tasas exactas.
-                </div>
-            </div>
-
-            <!-- Comparison Section -->
-            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift animate-fade-in" id="comparador">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold text-gray-800">
-                        <span class="inline-block mr-2">▸</span>Comparador de Ofertas
-                    </h3>
-                    <button 
-                        id="addComparison"
-                        class="bg-purple-100 text-purple-700 px-4 py-2 rounded-lg hover:bg-purple-200 transition font-semibold"
-                    >
-                        + Agregar Oferta
-                    </button>
-                </div>
-                <div id="comparisonContainer" class="text-center text-gray-400 py-8">
-                    <p>Haz clic en "Agregar Oferta" para comparar diferentes créditos</p>
-                </div>
-            </div>
-
-            <!-- Amortization Table -->
-            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift hidden" id="amortizationSection">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold text-gray-800">
-                        <span class="inline-block mr-2">▸</span>Tabla de Amortización
-                    </h3>
-                    <button 
-                        id="downloadTable"
-                        class="bg-green-100 text-green-700 px-4 py-2 rounded-lg hover:bg-green-200 transition font-semibold"
-                    >
-                        ↓ Descargar CSV
-                    </button>
-                </div>
-                <div id="amortizationTable" class="overflow-x-auto"></div>
-            </div>
-
-            <!-- Charts Section -->
-            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift hidden" id="chartsSection">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-2xl font-bold text-gray-800">
-                        <span class="inline-block mr-2">▸</span>Gráficos Interactivos
-                    </h3>
-                    <div class="flex space-x-2">
-                        <button
-                            id="showAmortizationChart"
-                            class="bg-blue-100 text-blue-700 px-4 py-2 rounded-lg hover:bg-blue-200 transition font-semibold"
-                        >
-                            Amortización
-                        </button>
-                        <button
-                            id="showComparisonChart"
-                            class="bg-green-100 text-green-700 px-4 py-2 rounded-lg hover:bg-green-200 transition font-semibold"
-                        >
-                            Comparación
-                        </button>
-                    </div>
-                </div>
-
-                <div id="chartContainer" class="bg-gray-50 p-6 rounded-xl">
-                    <div class="chart-container">
-                        <canvas id="amortizationChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Refinancing Calculator -->
-            <div class="mt-12 bg-white rounded-2xl p-8 card-shadow hover-lift" id="refinancingSection">
-                <h3 class="text-2xl font-bold text-gray-800 mb-6">
-                    <span class="inline-block mr-2">🔄</span>Calculadora de Refinanciamiento
-                </h3>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <!-- Crédito Actual -->
-                    <div class="bg-red-50 p-6 rounded-xl border border-red-200">
-                        <h4 class="font-bold text-red-900 mb-4 flex items-center">
-                            <span class="text-red-600 mr-2">📊</span>
-                            Crédito Actual
-                        </h4>
-                        <div class="space-y-4">
-
-                            <!-- Monto Pendiente -->
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Monto Pendiente ($)
-                                </label>
-                                <input
-                                    type="number"
-                                    id="refinancingMontoPendiente"
-                                    value="50000"
-                                    min="100"
-                                    step="100"
-                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                    required
-                                >
-                            </div>
-
-                            <!-- TNA Actual -->
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    TNA Actual (%)
-                                </label>
-                                <input
-                                    type="number"
-                                    id="refinancingTnaActual"
-                                    value="28"
-                                    min="0"
-                                    max="200"
-                                    step="0.1"
-                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                    required
-                                >
-                            </div>
-
-                            <!-- Meses Restantes -->
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Meses Restantes
-                                </label>
-                                <input
-                                    type="number"
-                                    id="refinancingMesesRestantes"
-                                    value="24"
-                                    min="1"
-                                    max="360"
-                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                    required
-                                >
-                            </div>
+            <!-- Argentina -->
+            <div class="country-section">
+                <h3 class="country-name">Argentina</h3>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-name">Banco Nación</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">85%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">45%</span></div>
                         </div>
                     </div>
-
-                    <!-- Nuevo Crédito -->
-                    <div class="bg-green-50 p-6 rounded-xl border border-green-200">
-                        <h4 class="font-bold text-green-900 mb-4 flex items-center">
-                            <span class="text-green-600 mr-2">💡</span>
-                            Nuevo Crédito
-                        </h4>
-                        <div class="space-y-4">
-
-                            <!-- TNA Nueva -->
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    TNA Nueva (%)
-                                </label>
-                                <input
-                                    type="number"
-                                    id="refinancingTnaNueva"
-                                    value="18"
-                                    min="0"
-                                    max="200"
-                                    step="0.1"
-                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                    required
-                                >
-                            </div>
-
-                            <!-- Costos de Refinanciamiento -->
-                            <div>
-                                <label class="block text-sm font-semibold text-gray-700 mb-2">
-                                    Costos de Refinanciamiento ($)
-                                </label>
-                                <input
-                                    type="number"
-                                    id="refinancingCostos"
-                                    value="1500"
-                                    min="0"
-                                    step="50"
-                                    class="w-full px-4 py-3 border-2 border-gray-200 rounded-lg input-focus outline-none transition"
-                                >
-                            </div>
-
-                            <!-- Mantener Plazo -->
-                            <div class="flex items-center">
-                                <input
-                                    type="checkbox"
-                                    id="refinancingMantenerPlazo"
-                                    checked
-                                    class="mr-3"
-                                >
-                                <label for="refinancingMantenerPlazo" class="text-sm font-semibold text-gray-700">
-                                    Mantener mismo plazo
-                                </label>
-                            </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Banco Provincia</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">78%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">42%</span></div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Botón Calcular -->
-                <div class="text-center mt-6">
-                    <button
-                        id="calculateRefinancing"
-                        class="bg-gradient-to-r from-green-600 to-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:from-green-700 hover:to-blue-700 transition transform hover:scale-105 shadow-lg"
-                    >
-                        Calcular Refinanciamiento →
-                    </button>
-                </div>
-
-                <!-- Resultados -->
-                <div id="refinancingResults" class="mt-8 space-y-6 hidden">
-                    <!-- Ahorro Total -->
-                    <div class="bg-gradient-to-r from-green-500 to-blue-500 text-white p-6 rounded-xl text-center">
-                        <h4 class="text-lg font-semibold mb-2">💰 Ahorro Total Estimado</h4>
-                        <p class="text-4xl font-bold" id="refinancingAhorroTotal">$0</p>
-                        <p class="text-sm opacity-90" id="refinancingAhorroPorcentaje">0% menos intereses</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-3 gap-6">
-                        <!-- Cuota Actual -->
-                        <div class="bg-red-50 p-4 rounded-xl border-2 border-red-200">
-                            <p class="text-xs text-red-600 font-semibold mb-1">CUOTA ACTUAL</p>
-                            <p class="text-2xl font-bold text-red-900" id="refinancingCuotaActual">$0</p>
-                            <p class="text-xs text-red-600 mt-1">por mes</p>
-                        </div>
-
-                        <!-- Nueva Cuota -->
-                        <div class="bg-green-50 p-4 rounded-xl border-2 border-green-200">
-                            <p class="text-xs text-green-600 font-semibold mb-1">NUEVA CUOTA</p>
-                            <p class="text-2xl font-bold text-green-900" id="refinancingNuevaCuota">$0</p>
-                            <p class="text-xs text-green-600 mt-1">por mes</p>
-                        </div>
-
-                        <!-- Ahorro Mensual -->
-                        <div class="bg-blue-50 p-4 rounded-xl border-2 border-blue-200">
-                            <p class="text-xs text-blue-600 font-semibold mb-1">AHORRO MENSUAL</p>
-                            <p class="text-2xl font-bold text-blue-900" id="refinancingAhorroMensual">$0</p>
-                            <p class="text-xs text-blue-600 mt-1">por mes</p>
-                        </div>
-                    </div>
-
-                    <!-- Análisis Detallado -->
-                    <div class="bg-gray-50 p-6 rounded-xl">
-                        <h4 class="font-bold text-gray-800 mb-4">📈 Análisis Detallado</h4>
-                        <div class="grid md:grid-cols-2 gap-6 text-sm">
-                            <div>
-                                <h5 class="font-semibold text-gray-700 mb-2">Crédito Actual</h5>
-                                <div class="space-y-1 text-gray-600">
-                                    <p>Total a pagar: <span id="refinancingTotalActual" class="font-semibold text-red-600">$0</span></p>
-                                    <p>Intereses totales: <span id="refinancingInteresesActual" class="font-semibold text-red-600">$0</span></p>
-                                    <p>TEA actual: <span id="refinancingTeaActual" class="font-semibold text-red-600">0%</span></p>
-                                </div>
-                            </div>
-                            <div>
-                                <h5 class="font-semibold text-gray-700 mb-2">Nuevo Crédito</h5>
-                                <div class="space-y-1 text-gray-600">
-                                    <p>Total a pagar: <span id="refinancingTotalNuevo" class="font-semibold text-green-600">$0</span></p>
-                                    <p>Intereses totales: <span id="refinancingInteresesNuevo" class="font-semibold text-green-600">$0</span></p>
-                                    <p>TEA nueva: <span id="refinancingTeaNueva" class="font-semibold text-green-600">0%</span></p>
-                                    <p>Recuperación costos: <span id="refinancingRecuperacion" class="font-semibold text-blue-600">0 meses</span></p>
-                                </div>
-                            </div>
+                    <div class="bank-card">
+                        <div class="bank-name">ICBC</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">82%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">48%</span></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
 
-    <!-- Educational Content -->
-    <section class="bg-white py-16" id="guia">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                ¿Qué es la Tasa Efectiva Anual (TEA)?
-            </h2>
-            
-            <div class="prose prose-lg max-w-none">
-                <div class="bg-purple-50 border-l-4 border-purple-600 p-6 mb-8 rounded-r-lg">
-                    <p class="text-gray-700 leading-relaxed">
-                        La <strong>Tasa Efectiva Anual (TEA)</strong> es el costo real de un crédito, considerando la capitalización de intereses. 
-                        A diferencia de la <strong>Tasa Nominal Anual (TNA)</strong>, la TEA refleja el verdadero impacto de los intereses compuestos.
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6 mb-8">
-                    <div class="bg-blue-50 p-6 rounded-xl">
-                        <h3 class="text-xl font-bold text-blue-900 mb-3">Tasa Nominal (TNA)</h3>
-                        <ul class="text-gray-700 space-y-2">
-                            <li>✓ Tasa publicitada por bancos</li>
-                            <li>✓ No considera capitalización</li>
-                            <li>✓ Siempre menor que la TEA</li>
-                            <li>✓ Útil para comparación inicial</li>
-                        </ul>
+            <!-- Colombia -->
+            <div class="country-section">
+                <h3 class="country-name">Colombia</h3>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-name">Bancolombia</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">24.5%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">12.8%</span></div>
+                        </div>
                     </div>
-                    <div class="bg-green-50 p-6 rounded-xl">
-                        <h3 class="text-xl font-bold text-green-900 mb-3">Tasa Efectiva (TEA)</h3>
-                        <ul class="text-gray-700 space-y-2">
-                            <li>✓ Costo real del crédito</li>
-                            <li>✓ Incluye capitalización</li>
-                            <li>✓ Permite comparar ofertas</li>
-                            <li>✓ Base para calcular cuotas</li>
-                        </ul>
+                    <div class="bank-card">
+                        <div class="bank-name">Davivienda</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">25.2%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">13.1%</span></div>
+                        </div>
                     </div>
-                </div>
-
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Fórmula de Conversión</h3>
-                <div class="bg-gray-100 p-6 rounded-xl mb-8 text-center">
-                    <code class="text-lg font-mono">
-                        TEA = (1 + TNA/n)^n - 1
-                    </code>
-                    <p class="text-sm text-gray-600 mt-2">Donde <strong>n</strong> es la frecuencia de capitalización anual</p>
-                </div>
-
-                <h3 class="text-2xl font-bold text-gray-800 mb-4">Ejemplo Práctico</h3>
-                <div class="bg-yellow-50 border border-yellow-200 p-6 rounded-xl">
-                    <p class="text-gray-700 mb-4">
-                        <strong>Crédito de $10,000 a 24% TNA con capitalización mensual:</strong>
-                    </p>
-                    <ul class="text-gray-700 space-y-2">
-                        <li>• TNA: 24% (lo que ves en publicidad)</li>
-                        <li>• TEA: 26.82% (lo que realmente pagas)</li>
-                        <li>• Diferencia: 2.82% adicional por capitalización</li>
-                        <li>• En un año: $282 más de intereses</li>
-                    </ul>
+                    <div class="bank-card">
+                        <div class="bank-name">BBVA Colombia</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">23.8%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">12.5%</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- AdSense Placeholder Bottom -->
-    <div class="container mx-auto px-4 my-8">
-        <div class="bg-gray-200 h-24 flex items-center justify-center text-gray-500 rounded-lg">
-            <!-- Google AdSense aquí (728x90 o responsive) -->
-            <span class="text-sm">Espacio publicitario</span>
-        </div>
+            <!-- Perú -->
+            <div class="country-section">
+                <h3 class="country-name">Perú</h3>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-name">BCP</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">22.5%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Interbank</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">23.1%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.2%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Scotiabank</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">21.8%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.7%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chile -->
+            <div class="country-section">
+                <h3 class="country-name">Chile</h3>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-name">Banco Estado</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">18.5%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">4.8%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Santander Chile</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">19.2%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">5.1%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">BCI</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">17.8%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">4.9%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ecuador -->
+            <div class="country-section">
+                <h3 class="country-name">Ecuador</h3>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-name">Banco Pichincha</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">16.5%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.2%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Banco Guayaquil</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">17.1%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.5%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Produbanco</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">15.8%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centroamérica -->
+            <div class="country-section">
+                <h3 class="country-name">Centroamérica</h3>
+                <div class="banks-grid">
+                    <div class="bank-card">
+                        <div class="bank-name">BAC Credomatic</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">28.5%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.9%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Banco Promerica</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">29.2%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">9.1%</span></div>
+                        </div>
+                    </div>
+                    <div class="bank-card">
+                        <div class="bank-name">Banco Cuscatlán</div>
+                        <div class="bank-label">TNA</div>
+                        <div class="rates-grid">
+                            <div class="rate-item">Personal: <span class="rate-value">27.8%</span></div>
+                            <div class="rate-item">Hipotecario: <span class="rate-value hipotecario">8.7%</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="disclaimer">
+                <p>* Las tasas son referenciales y pueden variar según el banco, perfil del cliente y condiciones del mercado. Siempre verifica con tu banco para obtener las tasas exactas.</p>
+            </div>
+        </main>
     </div>
-
-    <!-- FAQ Section -->
-    <section class="bg-gray-50 py-16">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">
-                Preguntas Frecuentes
-            </h2>
-            
-            <div class="space-y-4">
-                <details class="bg-white p-6 rounded-xl card-shadow">
-                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
-                        ¿Por qué la TEA es mayor que la TNA?
-                    </summary>
-                    <p class="mt-4 text-gray-600">
-                        La TEA incluye el efecto de la capitalización de intereses. Cuando los intereses se capitalizan (mensual, trimestral, etc.), 
-                        los intereses generan más intereses, aumentando el costo real del crédito.
-                    </p>
-                </details>
-
-                <details class="bg-white p-6 rounded-xl card-shadow">
-                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
-                        ¿Qué sistema de amortización me conviene?
-                    </summary>
-                    <p class="mt-4 text-gray-600">
-                        El <strong>sistema francés</strong> tiene cuotas fijas (más fácil de presupuestar), pero pagas más intereses al inicio. 
-                        El <strong>sistema alemán</strong> tiene cuotas decrecientes, pagas menos intereses totales pero las primeras cuotas son más altas.
-                    </p>
-                </details>
-
-                <details class="bg-white p-6 rounded-xl card-shadow">
-                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
-                        ¿Cómo comparo ofertas de diferentes bancos?
-                    </summary>
-                    <p class="mt-4 text-gray-600">
-                        Siempre compara la <strong>TEA</strong>, no la TNA. Dos créditos con la misma TNA pueden tener TEA diferentes según 
-                        la frecuencia de capitalización. Usa nuestra calculadora para convertir todas las ofertas a TEA.
-                    </p>
-                </details>
-
-                <details class="bg-white p-6 rounded-xl card-shadow">
-                    <summary class="font-bold text-lg cursor-pointer text-gray-800">
-                        ¿Esta calculadora incluye seguros y comisiones?
-                    </summary>
-                    <p class="mt-4 text-gray-600">
-                        Esta versión calcula solo la TEA basada en la tasa de interés. Para el <strong>Costo Financiero Total (CFT)</strong>, 
-                        debes sumar seguros, comisiones de apertura, gastos administrativos y otros cargos que te informe el banco.
-                    </p>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-8 text-center text-secondary">
-        <div class="container mx-auto px-4">
-            <p class="text-sm">© 2025 TasaReal</p>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script src="calculator.js"></script>
-    
-    <!-- Google Analytics Placeholder -->
-    <script>
-        // Google Analytics se agregará aquí
-        // gtag('config', 'G-XXXXXXXXXX');
-    </script>
 </body>
 </html>
-
