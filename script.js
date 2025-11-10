@@ -14,8 +14,16 @@ class CurrencyConverter {
 
     async loadExchangeRates() {
         try {
+            // Cache busting y timeout para mejor UX
+            const timestamp = Date.now();
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000); // 10s timeout
+
             // Obtener tasas con base USD para múltiples monedas
-            const usdResponse = await fetch(`${this.baseUrl}/USD`);
+            const usdResponse = await fetch(`${this.baseUrl}/USD?t=${timestamp}`, {
+                signal: controller.signal
+            });
+            clearTimeout(timeoutId);
             const usdData = await usdResponse.json();
 
             // Monedas LATAM principales
@@ -312,6 +320,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Inicializar elementos (sin animación de loading)
     const usdAmount = document.getElementById('usd-amount');
     const eurAmount = document.getElementById('eur-amount');
+
+    // Registrar Service Worker para PWA
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(registration => {
+                console.log('Service Worker registrado:', registration.scope);
+            })
+            .catch(error => {
+                console.log('Error registrando Service Worker:', error);
+            });
+    }
 
     // Inicializar la aplicación
     new CurrencyConverter();
