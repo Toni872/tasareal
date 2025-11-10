@@ -93,7 +93,6 @@ class CurrencyConverter {
         const eurInput = document.getElementById('eur-input');
 
         // Botones
-        const convertBtn = document.getElementById('convert-btn');
         const clearBtn = document.getElementById('clear-btn');
 
         // Event listeners para inputs
@@ -101,7 +100,6 @@ class CurrencyConverter {
         eurInput.addEventListener('input', () => this.convertFromEUR());
 
         // Event listeners para botones
-        convertBtn.addEventListener('click', () => this.convertAll());
         clearBtn.addEventListener('click', () => this.clearAll());
 
         // Toggle panel LATAM
@@ -148,18 +146,6 @@ class CurrencyConverter {
             document.getElementById('usd-input').value = usdValue.toFixed(2);
         } else {
             document.getElementById('usd-input').value = '';
-        }
-    }
-
-    convertAll() {
-        // Convertir desde el input que tenga valor
-        const usdValue = parseFloat(document.getElementById('usd-input').value) || 0;
-        const eurValue = parseFloat(document.getElementById('eur-input').value) || 0;
-
-        if (usdValue > 0) {
-            this.convertFromUSD();
-        } else if (eurValue > 0) {
-            this.convertFromEUR();
         }
     }
 
