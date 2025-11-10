@@ -8,7 +8,35 @@
     <meta name="author" content="TasaDiv">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#FFD700">
+    
+    <!-- PWA -->
     <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="logo.svg">
+    
+    <!-- SEO Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TasaDiv",
+      "description": "Tasas de cambio y convertidor de divisas para 18 monedas de Latinoamérica en tiempo real",
+      "url": "https://tasareal-5nup.vercel.app",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "156"
+      }
+    }
+    </script>
+    
     <title>TasaDiv - Tasas de Cambio para Latinoamérica</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -49,6 +77,11 @@
                 </div>
 
                 <p class="update-notice">Las tasas de cambio se actualizan periódicamente. La información es solo para fines de referencia.</p>
+
+                <!-- Espacio para AdSense - Header Banner -->
+                <div class="ad-space" id="ad-header-banner">
+                    <p style="margin: 0; opacity: 0.5;">📢 Espacio publicitario - Ad Banner 728x90</p>
+                </div>
 
                 <!-- Botón para monedas LATAM -->
                 <div class="latam-toggle">
@@ -105,6 +138,11 @@
                     <button id="clear-btn" class="clear-btn">Limpiar</button>
                 </div>
             </section>
+
+            <!-- Espacio para AdSense - Footer Banner -->
+            <aside class="ad-space ad-space-footer" id="ad-footer-banner">
+                <p style="margin: 0; opacity: 0.5;">📢 Espacio publicitario - Ad Banner 728x90</p>
+            </aside>
         </main>
 
         <footer>

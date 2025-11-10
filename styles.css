@@ -534,28 +534,57 @@ html {
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Optimización para ads - espacio reservado */
 .ad-space {
     min-height: 90px;
-    margin: 20px 0;
+    margin: 20px auto;
+    max-width: 728px;
     background: rgba(255, 215, 0, 0.05);
     border: 1px dashed rgba(255, 215, 0, 0.3);
-    border-radius: 4px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: rgba(255, 215, 0, 0.6);
     font-size: 12px;
+    text-align: center;
+    padding: 10px;
+}
+
+.ad-space-footer {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .ad-space {
+        max-width: 320px;
+        min-height: 100px;
+    }
 }
 
 /* Performance: reducir repaints y optimizar GPU */
 .latam-rate-card,
 .rate-card,
-.converter-card {
+.converter-card,
+.toggle-button,
+.clear-btn {
     will-change: transform;
     transform: translateZ(0); /* Fuerza GPU acceleration */
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+/* Optimizaciones de transiciones para performance */
+.latam-rate-card:hover,
+.rate-card:hover,
+.converter-card:hover {
+    transform: translateY(-3px) translateZ(0);
+    -webkit-transform: translateY(-3px) translateZ(0);
 }
 
 /* SEO y accesibilidad */
@@ -569,4 +598,36 @@ body {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+/* Prevenir zoom iOS en inputs */
+input[type="number"],
+input[type="text"],
+select,
+textarea {
+    font-size: 16px !important;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Touch feedback para móviles */
+@media (hover: none) and (pointer: coarse) {
+    .latam-rate-card:active,
+    .toggle-button:active,
+    .clear-btn:active {
+        transform: scale(0.97) translateZ(0);
+        -webkit-transform: scale(0.97) translateZ(0);
+        opacity: 0.8;
+    }
+}
+
+/* Mejorar rendimiento de animaciones */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

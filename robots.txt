@@ -1,0 +1,31 @@
+# robots.txt para TasaDiv - Optimizado para SEO
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://tasareal-5nup.vercel.app/sitemap.xml
+
+# Optimizar crawl budget
+Crawl-delay: 1
+
+# Permitir todos los bots principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Bloquear bots maliciosos
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
