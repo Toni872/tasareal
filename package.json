@@ -1,7 +1,7 @@
 {
-  "name": "tasareal",
+  "name": "monedalatam",
   "version": "1.0.0",
-  "description": "TasaReal - Tasas de cambio y convertidor de divisas USD & EUR a VES",
+  "description": "MonedaLatam - Tasas de cambio y convertidor de divisas para Latinoamérica",
   "main": "index.html",
   "scripts": {
     "start": "npx serve .",
@@ -25,7 +25,7 @@
     "type": "git",
     "url": "https://github.com/Toni872/tasareal.git"
   },
-  "homepage": "https://tasareal.vercel.app",
+  "homepage": "https://monedalatam.vercel.app",
   "devDependencies": {
     "live-server": "^1.2.2",
     "serve": "^14.2.1"

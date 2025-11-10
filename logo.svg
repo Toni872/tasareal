@@ -1,42 +1,26 @@
-<svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Icono Corporativo: Moneda con flechas de cambio -->
+<svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icono Dorado Sencillo: Moneda -->
   <g id="logo-icon" transform="translate(0, 8)">
-    <!-- Moneda circular con gradiente amarillo-verde -->
     <defs>
-      <linearGradient id="coinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#BAFF39;stop-opacity:1" />
-        <stop offset="100%" style="stop-color:#A8E635;stop-opacity:1" />
-      </linearGradient>
-      <linearGradient id="arrowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#BAFF39;stop-opacity:0.8" />
-        <stop offset="100%" style="stop-color:#A8E635;stop-opacity:1" />
+      <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:1" />
       </linearGradient>
     </defs>
 
-    <!-- Círculo principal de la moneda -->
-    <circle cx="20" cy="16" r="15" fill="url(#coinGradient)" stroke="#A8E635" stroke-width="1.5"/>
+    <!-- Moneda circular dorada simple -->
+    <circle cx="20" cy="16" r="16" fill="url(#goldGradient)" stroke="#DAA520" stroke-width="2"/>
 
-    <!-- Símbolo de dólar moderno -->
-    <text x="20" y="21" text-anchor="middle" fill="#6E6E6E" font-family="Arial, sans-serif" font-size="12" font-weight="bold">$</text>
-
-    <!-- Flechas de cambio alrededor -->
-    <g transform="translate(20, 16)">
-      <!-- Flecha superior -->
-      <path d="M-8,-12 L-5,-15 L-3,-13 L-8,-8 L-13,-13 L-11,-15 Z" fill="url(#arrowGradient)"/>
-      <!-- Flecha inferior -->
-      <path d="M8,12 L11,15 L13,13 L8,8 L3,13 L5,15 Z" fill="url(#arrowGradient)"/>
-      <!-- Flecha izquierda -->
-      <path d="M-12,-8 L-15,-5 L-13,-3 L-8,-8 L-13,-13 L-15,-11 Z" fill="url(#arrowGradient)"/>
-      <!-- Flecha derecha -->
-      <path d="M12,8 L15,11 L13,13 L8,8 L13,3 L15,5 Z" fill="url(#arrowGradient)"/>
-    </g>
+    <!-- Símbolo $ dorado -->
+    <text x="20" y="22" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="18" font-weight="bold">$</text>
   </g>
 
-  <!-- Texto Corporativo: TasaReal -->
-  <g id="logo-text" transform="translate(48, 0)">
-    <!-- Tasa -->
-    <text x="0" y="20" fill="#BAFF39" font-family="Arial, sans-serif" font-size="18" font-weight="700">Tasa</text>
-    <!-- Real -->
-    <text x="0" y="38" fill="#6E6E6E" font-family="Arial, sans-serif" font-size="16" font-weight="600">Real</text>
+  <!-- Texto Dorado: MonedaLatam -->
+  <g id="logo-text" transform="translate(50, 0)">
+    <!-- Moneda -->
+    <text x="0" y="24" fill="#FFD700" font-family="Arial, sans-serif" font-size="20" font-weight="700">Moneda</text>
+    <!-- Latam -->
+    <text x="0" y="42" fill="#FFA500" font-family="Arial, sans-serif" font-size="16" font-weight="600">Latam</text>
   </g>
 </svg>

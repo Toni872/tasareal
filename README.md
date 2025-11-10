@@ -1,16 +1,17 @@
-# TasaReal - Tasas de Cambio y Convertidor de Divisas
+# MonedaLatam - Tasas de Cambio para Latinoamérica
 
-**Producto web listo para vender: aplicación financiera sencilla y eficaz para tasas de cambio en Venezuela y Latinoamérica.**
+**Producto web listo para vender: aplicación financiera completa con 18 monedas latinoamericanas.**
 
-Una aplicación web moderna y minimalista para consultar tasas de cambio actuales y convertir divisas entre USD, EUR y VES (Bolívar Venezolano). Perfecta para monetizar con ads, afiliados fintech o vender como SaaS básico.
+Una aplicación web moderna y minimalista para consultar tasas de cambio actuales y convertir divisas de toda Latinoamérica. Incluye USD, EUR, VES y 15 monedas adicionales de países como Argentina, Brasil, Chile, Colombia, México, Perú, Uruguay, Paraguay, Bolivia, Costa Rica, Guatemala, Honduras, Nicaragua, Panamá y El Salvador. Perfecta para monetizar con ads, afiliados fintech o vender como SaaS básico.
 
 ## 🌟 Características Principales
 
-- **Tasas de cambio en tiempo real** - USD y EUR a VES actualizadas automáticamente
-- **Convertidor instantáneo** - Conversión bidireccional VES ↔ USD ↔ EUR
-- **Interfaz moderna y responsive** - Diseño glassmorphism en fondo morado, funciona en desktop y móvil
+- **18 monedas latinoamericanas** - Tasas de cambio en tiempo real para toda Latinoamérica
+- **Panel expandible LATAM** - Accede a todas las monedas con un click
+- **Convertidor instantáneo** - Conversión bidireccional USD ↔ EUR
+- **Interfaz moderna y responsive** - Diseño glassmorphism dorado, funciona en desktop y móvil
 - **Sin dependencias complejas** - Solo HTML, CSS y JavaScript puro (fácil mantenimiento)
-- **SEO optimizado** - Keywords como "tasa cambio dólar bolívar", "convertidor divisas venezuela"
+- **SEO optimizado** - Keywords como "monedas latam", "tasas cambio latinoamerica", "convertidor divisas"
 - **Listo para monetizar** - Integración fácil con Google AdSense o afiliados bancarios
 
 ## 🚀 Demo en Producción

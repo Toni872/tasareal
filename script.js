@@ -1,4 +1,4 @@
-// TasaReal - Tasas de cambio y convertidor de divisas
+// MonedaLatam - Tasas de cambio y convertidor de divisas para Latinoamérica
 class CurrencyConverter {
     constructor() {
         this.rates = {};
