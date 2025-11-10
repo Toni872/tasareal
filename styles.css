@@ -45,6 +45,7 @@ header {
     padding: 20px;
     background: transparent;
     border-radius: 0;
+    -webkit-backdrop-filter: none;
     backdrop-filter: none;
     border: none;
 }
@@ -273,6 +274,7 @@ footer {
     font-size: 14px;
     background: transparent;
     border-radius: 0;
+    -webkit-backdrop-filter: none;
     backdrop-filter: none;
     border: none;
 }
