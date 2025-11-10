@@ -133,7 +133,7 @@ class CurrencyConverter {
         if (usdValue > 0) {
             // Convertir USD a EUR
             const eurValue = usdValue * (this.rates.USD / this.rates.EUR);
-            document.getElementById('eur-input').value = this.formatCurrency(eurValue);
+            document.getElementById('eur-input').value = eurValue.toFixed(2);
         } else {
             document.getElementById('eur-input').value = '';
         }
@@ -145,7 +145,7 @@ class CurrencyConverter {
         if (eurValue > 0) {
             // Convertir EUR a USD
             const usdValue = eurValue * (this.rates.EUR / this.rates.USD);
-            document.getElementById('usd-input').value = this.formatCurrency(usdValue);
+            document.getElementById('usd-input').value = usdValue.toFixed(2);
         } else {
             document.getElementById('usd-input').value = '';
         }
