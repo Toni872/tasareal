@@ -172,7 +172,6 @@ class CurrencyConverter {
                 card.innerHTML = `
                     <div class="currency-code">${code} ${info.name}</div>
                     <div class="rate-value">${this.formatCurrency(this.rates[code])}</div>
-                    <div class="target-currency">VES</div>
                 `;
                 grid.appendChild(card);
             }
