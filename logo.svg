@@ -1,6 +1,6 @@
 <svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Icono de Banco: Edificio con Columnas -->
-  <g id="logo-icon" transform="translate(0, 4)">
+  <!-- Icono de Banco: Edificio con Columnas (más pequeño) -->
+  <g id="logo-icon" transform="translate(0, 8)">
     <defs>
       <!-- Gradiente metálico dorado -->
       <linearGradient id="metallicGold" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -12,34 +12,34 @@
       </linearGradient>
       <!-- Sombra para efecto 3D -->
       <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-        <feDropShadow dx="1" dy="1" stdDeviation="1" flood-color="#000000" flood-opacity="0.3"/>
+        <feDropShadow dx="0.5" dy="0.5" stdDeviation="0.5" flood-color="#000000" flood-opacity="0.3"/>
       </filter>
     </defs>
 
-    <!-- Base del edificio bancario -->
-    <rect x="4" y="20" width="24" height="16" fill="url(#metallicGold)" stroke="#8B7355" stroke-width="1" filter="url(#shadow)"/>
+    <!-- Base del edificio bancario (más pequeño) -->
+    <rect x="2" y="22" width="12" height="8" fill="url(#metallicGold)" stroke="#8B7355" stroke-width="0.5" filter="url(#shadow)"/>
 
     <!-- Techo triangular -->
-    <polygon points="4,20 16,12 28,20" fill="url(#metallicGold)" stroke="#8B7355" stroke-width="1"/>
+    <polygon points="2,22 8,16 14,22" fill="url(#metallicGold)" stroke="#8B7355" stroke-width="0.5"/>
 
-    <!-- Columnas clásicas -->
-    <rect x="6" y="16" width="3" height="20" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
-    <rect x="12" y="16" width="3" height="20" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
-    <rect x="18" y="16" width="3" height="20" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
-    <rect x="24" y="16" width="3" height="20" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
+    <!-- Columnas clásicas (más pequeñas) -->
+    <rect x="3" y="18" width="1.5" height="10" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
+    <rect x="6" y="18" width="1.5" height="10" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
+    <rect x="9" y="18" width="1.5" height="10" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
+    <rect x="12" y="18" width="1.5" height="10" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
 
     <!-- Capiteles de las columnas -->
-    <rect x="5" y="14" width="5" height="3" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
-    <rect x="11" y="14" width="5" height="3" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
-    <rect x="17" y="14" width="5" height="3" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
-    <rect x="23" y="14" width="5" height="3" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.5"/>
+    <rect x="2.5" y="16" width="2.5" height="1.5" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
+    <rect x="5.5" y="16" width="2.5" height="1.5" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
+    <rect x="8.5" y="16" width="2.5" height="1.5" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
+    <rect x="11.5" y="16" width="2.5" height="1.5" fill="url(#metallicGold)" stroke="#DAA520" stroke-width="0.25"/>
 
     <!-- Puerta central -->
-    <rect x="13" y="28" width="6" height="8" fill="#2C2C2C" stroke="#8B7355" stroke-width="1"/>
+    <rect x="6.5" y="26" width="3" height="4" fill="#2C2C2C" stroke="#8B7355" stroke-width="0.5"/>
   </g>
 
-  <!-- Texto Dorado: TasaDiv -->
-  <g id="logo-text" transform="translate(45, 0)">
+  <!-- Texto Dorado: TasaDiv (más pegado) -->
+  <g id="logo-text" transform="translate(18, 0)">
     <!-- Tasa -->
     <text x="0" y="22" fill="url(#metallicGold)" font-family="serif" font-size="18" font-weight="700">Tasa</text>
     <!-- Div -->
