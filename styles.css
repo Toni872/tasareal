@@ -41,8 +41,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 20px;
-    padding: 10px;
+    margin-bottom: 40px;
+    padding: 20px;
     background: transparent;
     border-radius: 0;
     backdrop-filter: none;
