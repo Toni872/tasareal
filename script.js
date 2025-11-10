@@ -177,7 +177,6 @@ class CurrencyConverter {
                 `;
                 // Añadir event listener para convertir al hacer click
                 card.addEventListener('click', (e) => {
-                    console.log(`Clicked ${code} card`);
                     this.convertFromLatamCard(code);
                     // Efecto visual de feedback
                     card.style.transform = 'scale(0.95)';
@@ -208,15 +207,9 @@ class CurrencyConverter {
     }
 
     convertFromLatamCard(currencyCode) {
-        console.log(`Converting from ${currencyCode}`);
-        console.log(`Rate for ${currencyCode}:`, this.rates[currencyCode]);
-
         // Convertir 1 unidad de la moneda seleccionada a USD y EUR
         const rateToUSD = 1 / this.rates[currencyCode]; // Cuánto vale 1 unidad de la moneda en USD
         const rateToEUR = rateToUSD * (this.rates.EUR / this.rates.USD); // Convertir a EUR
-
-        console.log(`1 ${currencyCode} = ${rateToUSD} USD`);
-        console.log(`1 ${currencyCode} = ${rateToEUR} EUR`);
 
         // Actualizar los campos del convertidor
         const usdInput = document.getElementById('usd-input');
@@ -225,9 +218,6 @@ class CurrencyConverter {
         if (usdInput && eurInput) {
             usdInput.value = rateToUSD.toFixed(4);
             eurInput.value = rateToEUR.toFixed(4);
-            console.log('Inputs updated successfully');
-        } else {
-            console.error('Could not find input elements');
         }
     }
 
