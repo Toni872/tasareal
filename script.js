@@ -166,7 +166,7 @@ class CurrencyConverter {
         grid.innerHTML = '';
 
         for (const [code, info] of Object.entries(this.latamCurrencies)) {
-            if (this.rates[code] && code !== 'USD' && code !== 'EUR') { // Excluir USD y EUR ya mostrados
+            if (this.rates[code]) { // Incluir todas las monedas LATAM
                 const card = document.createElement('div');
                 card.className = 'latam-rate-card';
                 card.innerHTML = `
