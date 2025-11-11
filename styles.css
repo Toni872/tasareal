@@ -1,16 +1,30 @@
-/* 🎨 DISEÑO ULTRA-PROFESIONAL Y MINIMALISTA */
+/* 🎨 DARK UI PROFESSIONAL - INSPIRED BY MODERN FINTECH */
 :root {
-    /* Colores limpios y profesionales */
-    --white: #FFFFFF;
-    --near-white: #F8F9FA;
-    --light-gray: #E9ECEF;
-    --medium-gray: #6C757D;
-    --dark-gray: #343A40;
-    --primary-blue: #007BFF;
-    --primary-hover: #0056B3;
-    --text-primary: #212529;
-    --text-secondary: #6C757D;
-    --border: #DEE2E6;
+    /* Dark Theme Colors */
+    --bg-primary: #0B1120;
+    --bg-secondary: #151B2D;
+    --bg-card: #1A2236;
+    --bg-hover: #202943;
+    
+    /* Accent Colors */
+    --accent-red: #E31E3D;
+    --accent-red-hover: #FF2D4D;
+    --accent-red-dark: #C11828;
+    
+    /* Text Colors */
+    --text-primary: #FFFFFF;
+    --text-secondary: #8B93A7;
+    --text-muted: #5A6274;
+    
+    /* Border & Dividers */
+    --border-color: #2A3447;
+    --border-light: #1E2738;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.6);
+    --shadow-red: 0 4px 20px rgba(227, 30, 61, 0.3);
 }
 
 * {
@@ -20,408 +34,610 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
-    background: var(--white);
+    background: var(--bg-primary);
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-image: 
+        radial-gradient(at 20% 20%, rgba(227, 30, 61, 0.1) 0px, transparent 50%),
+        radial-gradient(at 80% 80%, rgba(227, 30, 61, 0.08) 0px, transparent 50%);
 }
 
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 40px 20px;
 }
 
-/* 🎯 BANNER LLAMATIVO */
+/* 🎯 HEADER MODERN */
 header {
     text-align: center;
     padding: 0;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 }
 
 .banner {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 40px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+    padding: 50px 30px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
     position: relative;
     overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .banner::before {
-    content: '💵';
+    content: '';
     position: absolute;
-    font-size: 120px;
-    opacity: 0.1;
-    top: -20px;
-    right: 30px;
-    transform: rotate(-15deg);
+    top: -50%;
+    right: -10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(227, 30, 61, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite;
 }
 
 .banner::after {
-    content: '💳';
+    content: '';
     position: absolute;
-    font-size: 80px;
-    opacity: 0.1;
-    bottom: -10px;
-    left: 20px;
-    transform: rotate(15deg);
+    bottom: -30%;
+    left: -5%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(227, 30, 61, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-20px, -20px) scale(1.1); }
+}
+
+.banner:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-red), var(--shadow-lg);
 }
 
 .banner-title {
-    font-size: 36px;
+    font-size: 48px;
     font-weight: 800;
-    color: var(--white);
-    margin: 0 0 8px 0;
-    letter-spacing: -0.5px;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    color: var(--text-primary);
+    margin: 0 0 12px 0;
+    letter-spacing: -1px;
     position: relative;
     z-index: 1;
+    background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-red) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeInDown 0.8s ease-out;
 }
 
 .banner-subtitle {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.95);
+    font-size: 18px;
+    color: var(--text-secondary);
     margin: 0;
     font-weight: 400;
     position: relative;
     z-index: 1;
+    animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-/* 📄 MAIN CONTENT LIMPIO */
-main {
-    padding-top: 50px;
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📊 CARDS MODERNAS */
 section {
     margin-bottom: 60px;
+    animation: fadeIn 0.6s ease-out;
 }
 
-section h2 {
-    font-size: 20px;
-    font-weight: 600;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 8px;
+    margin-bottom: 25px;
     text-align: center;
-    letter-spacing: -0.3px;
+    position: relative;
+    padding-bottom: 15px;
 }
 
-.subtitle {
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--accent-red);
+    border-radius: 2px;
+}
+
+.disclaimer {
     text-align: center;
-    color: var(--text-secondary);
-    margin-bottom: 30px;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 15px;
+    font-style: italic;
 }
 
-/* 💱 TASAS DE CAMBIO - DISEÑO LIMPIO */
-.exchange-rates {
-    margin-bottom: 50px;
-}
-
-.rates-grid {
+/* 💱 RATES DISPLAY */
+.rates {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
-    margin: 30px 0;
+    margin-bottom: 20px;
 }
 
 .rate-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 24px 20px;
-    text-align: center;
-    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.rate-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--accent-red) 0%, transparent 100%);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
 }
 
 .rate-card:hover {
-    border-color: var(--primary-blue);
-    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-red), var(--shadow-lg);
+    border-color: var(--accent-red);
 }
 
-.currency-header {
-    margin-bottom: 12px;
-}
-
-.currency-code {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-    letter-spacing: 0.5px;
+.rate-card:hover::before {
+    transform: scaleX(1);
 }
 
 .currency-name {
-    display: block;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: 600;
     color: var(--text-secondary);
-    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
-.rate-value {
-    margin-top: 8px;
-}
-
-.amount {
-    display: block;
-    font-size: 32px;
+.currency-code {
+    font-size: 28px;
     font-weight: 700;
     color: var(--text-primary);
-    letter-spacing: -0.5px;
-    line-height: 1.2;
-}
-
-.update-notice {
-    text-align: center;
-    color: var(--text-secondary);
-    font-size: 13px;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-    line-height: 1.5;
-}
-
-/* 🔄 CONVERTIDOR - DISEÑO LIMPIO */
-.converter {
-    margin-bottom: 50px;
-}
-
-.converter-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 16px;
-    margin: 30px 0;
-}
-
-.converter-card {
-    background: var(--near-white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 20px 16px;
-    text-align: center;
-}
-
-.converter-card h3 {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 12px;
-    letter-spacing: -0.2px;
-}
-
-.input-group {
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 8px;
+    gap: 10px;
 }
 
-.input-group input {
-    flex: 1;
-    padding: 10px 12px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: 500;
-    text-align: right;
-    background: var(--white);
-    color: var(--text-primary);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+.currency-code::before {
+    content: '💵';
+    font-size: 24px;
 }
 
-.input-group input:focus {
-    outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px rgba(0,123,255,0.1);
+.exchange-rate {
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--accent-red);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.5px;
 }
 
-.input-group input:disabled {
-    background: var(--light-gray);
-    color: var(--text-secondary);
-    cursor: not-allowed;
-}
-
-.currency-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    min-width: 45px;
-    text-align: left;
-    letter-spacing: 0.3px;
-}
-
-.converter-actions {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 30px;
-}
-
-.clear-btn {
-    padding: 10px 24px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    border: 1px solid var(--border);
-    background: var(--white);
-    color: var(--text-primary);
-}
-
-.clear-btn:hover {
-    background: var(--near-white);
-    border-color: var(--medium-gray);
-}
-
-.clear-btn:active {
-    transform: translateY(1px);
-}
-
-/* 📄 FOOTER MINIMALISTA */
-footer {
-    text-align: center;
-    margin-top: 80px;
-    padding: 30px 0;
-    border-top: 1px solid var(--border);
-    color: var(--text-secondary);
-    font-size: 13px;
-}
-
-/* 🌎 PANEL LATAM - DISEÑO LIMPIO */
+/* 🔄 LATAM TOGGLE BUTTON */
 .latam-toggle {
     text-align: center;
-    margin-top: 30px;
+    margin: 40px 0;
 }
 
 .toggle-button {
-    background: var(--primary-blue);
-    color: var(--white);
+    background: var(--accent-red);
+    color: var(--text-primary);
     border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
+    padding: 16px 40px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+    box-shadow: var(--shadow-red);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.toggle-button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    z-index: -1;
+}
+
+.toggle-button:hover::before {
+    width: 300px;
+    height: 300px;
 }
 
 .toggle-button:hover {
-    background: var(--primary-hover);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 30px rgba(227, 30, 61, 0.5);
+    background: var(--accent-red-hover);
 }
 
 .toggle-button:active {
-    transform: translateY(1px);
+    transform: translateY(0) scale(0.98);
 }
 
-.arrow {
-    transition: transform 0.2s ease;
-    font-size: 12px;
-}
-
-.toggle-button.active .arrow {
-    transform: rotate(180deg);
-}
-
+/* 🌎 LATAM PANEL */
 .latam-rates-panel {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease;
-    background: var(--near-white);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    margin-top: 20px;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    background: var(--bg-secondary);
+    border-radius: 20px;
+    margin-top: 30px;
+    border: 1px solid var(--border-light);
 }
 
 .latam-rates-panel.open {
     max-height: 2000px;
+    padding: 40px 30px;
+    box-shadow: var(--shadow-lg);
 }
 
 .latam-rates-panel h3 {
+    font-size: 22px;
     color: var(--text-primary);
+    margin-bottom: 30px;
     text-align: center;
-    margin: 24px 0 16px 0;
-    font-size: 18px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .latam-rates-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    padding: 0 20px 24px 20px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
 }
 
 .latam-rate-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    padding: 16px 12px;
-    text-align: center;
-    transition: all 0.2s ease;
+    background: var(--bg-card);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
     cursor: pointer;
-    min-height: 80px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.latam-rate-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(227, 30, 61, 0.15) 0%, transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s ease;
+    border-radius: 50%;
 }
 
 .latam-rate-card:hover {
-    border-color: var(--primary-blue);
-    box-shadow: 0 2px 8px rgba(0,123,255,0.1);
+    transform: translateY(-5px) scale(1.02);
+    border-color: var(--accent-red);
+    box-shadow: var(--shadow-red);
+}
+
+.latam-rate-card:hover::after {
+    transform: translate(-50%, -50%) scale(2);
 }
 
 .latam-rate-card:active {
-    transform: scale(0.98);
+    transform: translateY(-2px) scale(1);
 }
 
 .latam-rate-card .currency-code {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-primary);
+    font-size: 18px;
     margin-bottom: 8px;
-    display: block;
 }
 
-.latam-rate-card .rate-value {
-    font-size: 18px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 6px;
-    display: block;
+.latam-rate-card .currency-code::before {
+    content: '🌎';
+    font-size: 16px;
+}
+
+.latam-rate-card .exchange-rate {
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 .latam-rate-card .click-hint {
-    font-size: 11px;
-    color: var(--text-secondary);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-top: 8px;
     opacity: 0;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.3s;
 }
 
 .latam-rate-card:hover .click-hint {
     opacity: 1;
+    color: var(--accent-red);
 }
 
-/* 📱 RESPONSIVE - MÓVIL OPTIMIZADO */
+/* 🔄 CONVERTER */
+.converter {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.converter::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(227, 30, 61, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+.converter h2 {
+    margin-bottom: 15px;
+}
+
+.converter-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    background: var(--bg-secondary);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    font-variant-numeric: tabular-nums;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--accent-red);
+    box-shadow: 0 0 0 4px rgba(227, 30, 61, 0.15);
+    background: var(--bg-card);
+    transform: translateY(-2px);
+}
+
+.input-group input:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--border-color);
+}
+
+.divider span {
+    background: var(--bg-card);
+    padding: 0 15px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+}
+
+.converter-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn {
+    flex: 1;
+    padding: 16px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-clear {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+}
+
+.btn-clear:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    border-color: var(--accent-red);
+    transform: translateY(-2px);
+}
+
+.btn-clear:active {
+    transform: translateY(0);
+}
+
+/* 📱 AD SPACES */
+.ad-space {
+    background: var(--bg-secondary);
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    margin: 40px 0;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.ad-space:hover {
+    border-color: var(--accent-red);
+    background: var(--bg-card);
+}
+
+/* 🦶 FOOTER */
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+    border-top: 1px solid var(--border-light);
+    margin-top: 80px;
+}
+
+footer a {
+    color: var(--accent-red);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--accent-red-hover);
+    text-decoration: underline;
+}
+
+/* 📱 RESPONSIVE */
 @media (max-width: 768px) {
     .container {
-        padding: 30px 16px;
-    }
-
-    header {
-        margin-bottom: 40px;
+        padding: 30px 15px;
     }
 
     .banner {
-        padding: 32px 16px;
-        border-radius: 10px;
+        padding: 40px 20px;
+        border-radius: 16px;
     }
 
+    .banner-title {
+        font-size: 36px;
+    }
+
+    .banner-subtitle {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .rates {
+        grid-template-columns: 1fr;
+    }
+
+    .converter {
+        padding: 30px 20px;
+    }
+
+    .converter-actions {
+        flex-direction: column;
+    }
+
+    .latam-rates-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .latam-rates-panel.open {
+        padding: 30px 20px;
+    }
+}
+
+@media (max-width: 480px) {
     .banner-title {
         font-size: 28px;
     }
@@ -430,98 +646,72 @@ footer {
         font-size: 14px;
     }
 
-    .banner::before {
-        font-size: 80px;
-        right: 10px;
+    .currency-code {
+        font-size: 24px;
     }
 
-    .banner::after {
-        font-size: 60px;
-        left: 10px;
-    }
-
-    main {
-        padding-top: 40px;
-    }
-
-    section {
-        margin-bottom: 50px;
-    }
-
-    .rates-grid,
-    .converter-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .latam-rates-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    }
-
-    .amount {
-        font-size: 28px;
+    .exchange-rate {
+        font-size: 30px;
     }
 
     .toggle-button {
         width: 100%;
-        max-width: 320px;
-    }
-
-    footer {
-        margin-top: 60px;
+        padding: 14px 30px;
     }
 }
 
-/* 📢 ESPACIOS PUBLICITARIOS */
-.ad-space {
-    min-height: 90px;
-    margin: 30px auto;
-    max-width: 728px;
-    background: var(--near-white);
-    border: 1px dashed var(--border);
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-secondary);
-    font-size: 12px;
-    text-align: center;
-    padding: 20px;
+/* ⚡ PERFORMANCE OPTIMIZATIONS */
+* {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
 }
 
-.ad-space-footer {
-    margin-top: 50px;
-    margin-bottom: 30px;
+button, .rate-card, .latam-rate-card, .banner {
+    will-change: transform;
 }
 
-@media (max-width: 768px) {
-    .ad-space {
-        max-width: 320px;
-        min-height: 100px;
+/* 🎭 LOADING STATE */
+.loading {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
     }
 }
 
-/* ⚡ OPTIMIZACIONES DE PERFORMANCE */
-html {
-    scroll-behavior: smooth;
-}
-
-input[type="number"],
-input[type="text"],
-select,
-textarea {
-    font-size: 16px !important;
-    -webkit-appearance: none;
-    appearance: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+/* 🌟 SCROLL ANIMATIONS */
+@media (prefers-reduced-motion: no-preference) {
+    section {
+        animation: fadeInUp 0.6s ease-out;
+        animation-fill-mode: both;
     }
+
+    section:nth-child(1) { animation-delay: 0.1s; }
+    section:nth-child(2) { animation-delay: 0.2s; }
+    section:nth-child(3) { animation-delay: 0.3s; }
 }
+
+/* 🎨 CUSTOM SCROLLBAR */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-red);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-red-hover);
 }
