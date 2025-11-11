@@ -147,11 +147,11 @@ class CurrencyConverter {
         const usdValue = parseFloat(document.getElementById('usd-input').value) || 0;
 
         if (usdValue > 0) {
-            // Convertir USD a EUR
-            const eurValue = usdValue * (this.rates.USD / this.rates.EUR);
+            // Convertir USD a EUR (EUR está en formato 1 USD = X EUR)
+            const eurValue = usdValue * this.rates.EUR;
             document.getElementById('eur-input').value = eurValue.toFixed(4);
 
-            // Convertir USD a moneda LATAM seleccionada
+            // Convertir USD a moneda LATAM seleccionada (tasa está en formato 1 USD = X LATAM)
             if (this.selectedLatamCurrency) {
                 const latamValue = usdValue * this.rates[this.selectedLatamCurrency];
                 document.getElementById('latam-input').value = latamValue.toFixed(2);
@@ -168,13 +168,14 @@ class CurrencyConverter {
         const eurValue = parseFloat(document.getElementById('eur-input').value) || 0;
 
         if (eurValue > 0) {
-            // Convertir EUR a USD
-            const usdValue = eurValue * (this.rates.EUR / this.rates.USD);
+            // Convertir EUR a USD (EUR está en formato 1 USD = X EUR, entonces 1 EUR = 1/X USD)
+            const usdValue = eurValue / this.rates.EUR;
             document.getElementById('usd-input').value = usdValue.toFixed(4);
 
             // Convertir EUR a moneda LATAM seleccionada
+            // Primero EUR → USD, luego USD → LATAM
             if (this.selectedLatamCurrency) {
-                const latamValue = eurValue * (this.rates.EUR / this.rates[this.selectedLatamCurrency]);
+                const latamValue = usdValue * this.rates[this.selectedLatamCurrency];
                 document.getElementById('latam-input').value = latamValue.toFixed(2);
             }
         } else {
@@ -284,9 +285,11 @@ class CurrencyConverter {
         const latamValue = parseFloat(document.getElementById('latam-input').value) || 0;
 
         if (latamValue > 0) {
-            // Convertir de LATAM a USD y EUR
+            // Convertir de LATAM a USD (la tasa ya está en formato 1 USD = X LATAM)
             const usdValue = latamValue / this.rates[this.selectedLatamCurrency];
-            const eurValue = usdValue * (this.rates.EUR / this.rates.USD);
+            
+            // Convertir USD a EUR (EUR está en formato 1 USD = X EUR)
+            const eurValue = usdValue * this.rates.EUR;
 
             document.getElementById('usd-input').value = usdValue.toFixed(4);
             document.getElementById('eur-input').value = eurValue.toFixed(4);
