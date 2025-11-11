@@ -13,7 +13,7 @@
 ## 🎯 Paso 1: Crear Cuenta Google AdSense
 
 1. Ve a [https://www.google.com/adsense/start/](https://www.google.com/adsense/start/)
-2. Ingresa tu dominio: `tasareal-5nup.vercel.app` (o tu dominio personalizado)
+2. Ingresa tu dominio: `tasadiv.vercel.app` (o tu dominio personalizado)
 3. Completa tu información de pago y verificación
 4. Espera aprobación (1-7 días típicamente)
 

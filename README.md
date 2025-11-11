@@ -20,7 +20,7 @@
 
 ## 🌐 Demo en Vivo
 
-### 👉 **[VER DEMO FUNCIONANDO](https://tasareal-5nup.vercel.app/)**
+### 👉 **[VER DEMO FUNCIONANDO](https://tasadiv.vercel.app/)**
 
 **Pruébalo:**
 - ✅ Tasas USD/EUR actualizan automáticamente
@@ -118,7 +118,7 @@ Database:  No requiere
 ## 📂 Estructura del Proyecto
 
 ```
-tasareal/
+tasadiv/
 ├── index.html              # Página principal
 ├── styles.css              # Estilos optimizados
 ├── script.js               # Lógica de conversión
@@ -146,8 +146,8 @@ tasareal/
 
 ```bash
 # Clonar
-git clone https://github.com/Toni872/tasareal.git
-cd tasareal
+git clone https://github.com/Toni872/tasadiv.git
+cd tasadiv
 
 # Abrir en navegador
 # (o usar Live Server en VS Code)

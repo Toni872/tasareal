@@ -19,11 +19,11 @@
     "bolivar",
     "venezuela"
   ],
-  "author": "TasaReal",
+  "author": "TasaDiv",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Toni872/tasareal.git"
+    "url": "https://github.com/Toni872/tasadiv.git"
   },
   "homepage": "https://tasadiv.vercel.app",
   "devDependencies": {

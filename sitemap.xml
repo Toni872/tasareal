@@ -4,7 +4,7 @@
   
   <!-- Página Principal -->
   <url>
-    <loc>https://tasareal-5nup.vercel.app/</loc>
+    <loc>https://tasadiv.vercel.app/</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -12,7 +12,7 @@
   
   <!-- Logo -->
   <url>
-    <loc>https://tasareal-5nup.vercel.app/logo.svg</loc>
+    <loc>https://tasadiv.vercel.app/logo.svg</loc>
     <lastmod>2025-01-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>

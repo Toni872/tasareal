@@ -4,7 +4,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://tasareal-5nup.vercel.app/sitemap.xml
+Sitemap: https://tasadiv.vercel.app/sitemap.xml
 
 # Optimizar crawl budget
 Crawl-delay: 1

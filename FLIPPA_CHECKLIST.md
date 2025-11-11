@@ -3,7 +3,7 @@
 ## 🎯 PREPARACIÓN ANTES DE PUBLICAR
 
 ### 1. **Verificar Que Todo Funciona**
-- [ ] Demo live funcional: https://tasareal-5nup.vercel.app/
+- [ ] Demo live funcional: https://tasadiv.vercel.app/
 - [ ] Tasas USD/EUR se actualizan correctamente
 - [ ] Panel LATAM abre y cierra suavemente
 - [ ] Convertidor funciona en todas las monedas

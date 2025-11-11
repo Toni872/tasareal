@@ -1,4 +1,4 @@
-💰 Acabo de lanzar TasaDiv: Una aplicación web financiera que procesa tasas de cambio en tiempo real para 18 monedas latinoamericanas
+ Acabo de lanzar TasaDiv: Una aplicación web financiera que procesa tasas de cambio en tiempo real para 18 monedas latinoamericanas
 
 Después de semanas de desarrollo, comparto cómo construir una app fintech profesional usando solo tecnologías web fundamentales.
 
@@ -85,3 +85,4 @@ Código en GitHub con 7+ guías técnicas detalladas.
 Compartir experiencias nos hace mejores developers. 💬👇
 
 #WebDevelopment #JavaScript #FinTech #PWA #Frontend #VanillaJS #OpenSource #WebPerformance #HTML #CSS #API #DeveloperLife #Coding #SoftwareEngineering #TechInnovation
+💰

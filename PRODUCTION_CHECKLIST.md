@@ -149,7 +149,7 @@
 ## 📦 10. ARCHIVOS ENTREGADOS
 
 ```
-tasareal/
+tasadiv/
 ├── index.html              ✅ Página principal
 ├── styles.css              ✅ Estilos optimizados
 ├── script.js               ✅ Lógica de conversión
@@ -173,8 +173,8 @@ tasareal/
 ## 🚀 11. DESPLIEGUE EN VERCEL
 
 ### **Estado Actual:**
-- URL: https://tasareal-5nup.vercel.app/
-- Repositorio: https://github.com/Toni872/tasareal
+- URL: https://tasadiv.vercel.app/
+- Repositorio: https://github.com/Toni872/tasadiv
 - Deploy: Automático en cada push
 
 ### **Para Transferir al Comprador:**

@@ -13,7 +13,7 @@ Capturar **2 screenshots profesionales en alta resolución** para GitHub y Flipp
 ### **Preparación**
 
 1. **Abre Chrome/Brave** en modo incógnito (Ctrl+Shift+N)
-2. **Navega a:** https://tasareal-5nup.vercel.app/
+2. **Navega a:** https://tasadiv.vercel.app/
 3. **Maximiza la ventana** a pantalla completa (F11)
 4. **Espera 3 segundos** para que las tasas carguen completamente
 
@@ -71,7 +71,7 @@ Capturar **2 screenshots profesionales en alta resolución** para GitHub y Flipp
 
 ### **Preparación**
 
-1. **Abre Chrome** en https://tasareal-5nup.vercel.app/
+1. **Abre Chrome** en https://tasadiv.vercel.app/
 2. **Abre DevTools:** F12 o Ctrl+Shift+I
 3. **Activa Device Mode:** Ctrl+Shift+M (ícono de teléfono arriba)
 
@@ -233,7 +233,7 @@ git push origin main
 ```
 
 ### **Paso 3: Verificar en GitHub**
-1. Ve a https://github.com/Toni872/tasareal
+1. Ve a https://github.com/Toni872/tasadiv
 2. Scroll en README.md
 3. Verifica que ambos screenshots se muestren correctamente
 

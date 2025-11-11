@@ -1,6 +1,6 @@
-# Guía de Despliegue - TasaReal
+# Guía de Despliegue - TasaDiv
 
-Esta guía detalla cómo desplegar TasaReal en producción paso a paso. Es un proyecto estático simple, ideal para hosting gratuito o pago.
+Esta guía detalla cómo desplegar TasaDiv en producción paso a paso. Es un proyecto estático simple, ideal para hosting gratuito o pago.
 
 ## 🚀 Despliegue Recomendado: Vercel
 
@@ -10,7 +10,7 @@ Esta guía detalla cómo desplegar TasaReal en producción paso a paso. Es un pr
 
 ### Paso 2: Importar Proyecto
 1. Ve a Vercel Dashboard → "New Project".
-2. Selecciona "Import Git Repository" y elige `Toni872/tasareal`.
+2. Selecciona "Import Git Repository" y elige `Toni872/tasadiv`.
 3. Configura:
    - **Framework Preset**: "Other" (ya que es HTML/CSS/JS puro).
    - **Root Directory**: Deja vacío (raíz del repo).
@@ -38,14 +38,14 @@ Si quieres usar una API key propia para ExchangeRate-API:
 
 ### Netlify
 1. Ve a [Netlify](https://netlify.com) y conecta GitHub.
-2. Importa el repo `Toni872/tasareal`.
+2. Importa el repo `Toni872/tasadiv`.
 3. Despliega automáticamente - no configuración necesaria.
 4. URL: `https://tu-sitio.netlify.app`.
 
 ### GitHub Pages
 1. Ve a tu repo en GitHub → Settings → Pages.
 2. Selecciona "Deploy from a branch" → Branch `main` → Folder `/(root)`.
-3. Despliega. URL: `https://tu-usuario.github.io/tasareal`.
+3. Despliega. URL: `https://tu-usuario.github.io/tasadiv`.
 
 ### Hosting Estático (cPanel, etc.)
 1. Sube los archivos `index.html`, `styles.css`, `script.js`, `logo.svg`, `favicon.ico` a tu hosting.
@@ -55,7 +55,7 @@ Si quieres usar una API key propia para ExchangeRate-API:
 
 ### En Vercel
 1. Ve a Project Settings → Domains.
-2. Añade tu dominio (p.ej. `tasareal.com`).
+2. Añade tu dominio (p.ej. `tasadiv.com`).
 3. Configura DNS en tu proveedor de dominio apuntando a Vercel.
 
 ### SEO y Analytics
@@ -81,4 +81,4 @@ Si quieres usar una API key propia para ExchangeRate-API:
 - **Uptime**: Usa herramientas como UptimeRobot para monitorear disponibilidad.
 - **SEO**: Monitorea rankings con keywords "tasa cambio dólar bolívar".
 
-¡Listo! TasaReal está diseñado para despliegues rápidos y cero mantenimiento. Si necesitas ayuda, revisa los issues del repo.
+¡Listo! TasaDiv está diseñado para despliegues rápidos y cero mantenimiento. Si necesitas ayuda, revisa los issues del repo.

@@ -197,7 +197,7 @@ backface-visibility: hidden;
 ## 📦 ARCHIVOS FINALES
 
 ```
-tasareal/
+tasadiv/
 ├── index.html                  ✅ HTML optimizado (15KB)
 ├── styles.css                  ✅ CSS con prefixes (50KB)
 ├── script.js                   ✅ JS vanilla puro (37KB)
@@ -224,8 +224,8 @@ TOTAL: ~177KB (óptimo para web app)
 ## 🚀 DEPLOY EN VERCEL
 
 ### Estado Actual
-- **URL:** https://tasareal-5nup.vercel.app/
-- **Repositorio:** https://github.com/Toni872/tasareal
+- **URL:** https://tasadiv.vercel.app/
+- **Repositorio:** https://github.com/Toni872/tasadiv
 - **Branch:** main
 - **Deploy:** Automático en cada push
 - **Último commit:** `23ffd0a`
