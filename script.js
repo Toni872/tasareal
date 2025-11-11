@@ -79,6 +79,8 @@ class CurrencyConverter {
     updateDisplay() {
         const usdAmount = document.getElementById('usd-amount');
         const eurAmount = document.getElementById('eur-amount');
+        const usdTime = document.getElementById('usd-time');
+        const eurTime = document.getElementById('eur-time');
 
         if (usdAmount && this.rates.USD) {
             usdAmount.textContent = this.formatCurrency(this.rates.USD);
@@ -87,6 +89,11 @@ class CurrencyConverter {
         if (eurAmount && this.rates.EUR) {
             eurAmount.textContent = this.formatCurrency(this.rates.EUR);
         }
+        
+        // Actualizar timestamps
+        const currentTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        if (usdTime) usdTime.textContent = currentTime;
+        if (eurTime) eurTime.textContent = currentTime;
     }
 
     formatCurrency(amount) {

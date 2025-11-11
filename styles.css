@@ -104,29 +104,69 @@ header {
     box-shadow: var(--shadow-red), var(--shadow-lg);
 }
 
+.banner-badge {
+    display: inline-block;
+    background: var(--accent-red);
+    color: var(--text-primary);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.6s ease-out;
+}
+
 .banner-title {
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 800;
     color: var(--text-primary);
-    margin: 0 0 12px 0;
-    letter-spacing: -1px;
+    margin: 0 0 15px 0;
+    letter-spacing: -2px;
     position: relative;
     z-index: 1;
-    background: linear-gradient(135deg, #FFFFFF 0%, var(--accent-red) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     animation: fadeInDown 0.8s ease-out;
 }
 
 .banner-subtitle {
-    font-size: 18px;
+    font-size: 16px;
     color: var(--text-secondary);
-    margin: 0;
+    margin: 0 0 30px 0;
     font-weight: 400;
     position: relative;
     z-index: 1;
+    letter-spacing: 0.5px;
     animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.banner-metrics {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+.metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.metric-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent-red);
+    line-height: 1;
+}
+
+.metric-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 
 @keyframes fadeInDown {
@@ -234,28 +274,54 @@ h2::after {
     transform: scaleX(1);
 }
 
-.currency-name {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
 .currency-code {
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    letter-spacing: -0.5px;
 }
 
-.currency-code::before {
-    content: '💵';
-    font-size: 24px;
+.status-badge {
+    font-size: 9px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.status-badge.live {
+    background: rgba(227, 30, 61, 0.2);
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+    animation: pulse 2s ease infinite;
+}
+
+.currency-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-bottom: 15px;
+    letter-spacing: 0.3px;
+}
+
+.card-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-light);
+}
+
+.update-time {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 500;
 }
 
 .exchange-rate {
@@ -277,7 +343,7 @@ h2::after {
     color: var(--text-primary);
     border: none;
     padding: 16px 40px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     border-radius: 12px;
     cursor: pointer;
@@ -286,6 +352,22 @@ h2::after {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 auto;
+}
+
+.btn-text {
+    flex: 1;
+}
+
+.btn-badge {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
 }
 
 .toggle-button::before {
@@ -334,12 +416,32 @@ h2::after {
     box-shadow: var(--shadow-lg);
 }
 
-.latam-rates-panel h3 {
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.panel-header h3 {
     font-size: 22px;
     color: var(--text-primary);
-    margin-bottom: 30px;
-    text-align: center;
     font-weight: 700;
+    margin: 0;
+}
+
+.panel-badge {
+    background: rgba(227, 30, 61, 0.15);
+    color: var(--accent-red);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    border: 1px solid rgba(227, 30, 61, 0.3);
 }
 
 .latam-rates-grid {
@@ -389,11 +491,7 @@ h2::after {
 .latam-rate-card .currency-code {
     font-size: 18px;
     margin-bottom: 8px;
-}
-
-.latam-rate-card .currency-code::before {
-    content: '🌎';
-    font-size: 16px;
+    font-weight: 700;
 }
 
 .latam-rate-card .exchange-rate {
@@ -453,20 +551,35 @@ h2::after {
     position: relative;
 }
 
-.input-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.card-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
-.input-group input {
+.card-label span:first-child {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.hint {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper input {
     width: 100%;
-    padding: 16px 20px;
-    font-size: 18px;
+    padding: 16px 60px 16px 20px;
+    font-size: 20px;
     font-weight: 600;
     background: var(--bg-secondary);
     border: 2px solid var(--border-color);
@@ -476,7 +589,19 @@ h2::after {
     font-variant-numeric: tabular-nums;
 }
 
-.input-group input:focus {
+.currency-tag {
+    position: absolute;
+    right: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-red);
+    background: rgba(227, 30, 61, 0.1);
+    padding: 4px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+}
+
+.input-wrapper input:focus {
     outline: none;
     border-color: var(--accent-red);
     box-shadow: 0 0 0 4px rgba(227, 30, 61, 0.15);
@@ -484,8 +609,8 @@ h2::after {
     transform: translateY(-2px);
 }
 
-.input-group input:disabled {
-    opacity: 0.6;
+.input-wrapper input:disabled {
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
@@ -559,12 +684,20 @@ h2::after {
     padding: 30px;
     text-align: center;
     margin: 40px 0;
-    color: var(--text-muted);
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+.ad-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: var(--bg-card);
+    padding: 4px 12px;
+    border-radius: 4px;
 }
 
 .ad-space:hover {
@@ -580,6 +713,38 @@ footer {
     font-size: 14px;
     border-top: 1px solid var(--border-light);
     margin-top: 80px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-badge {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--bg-secondary);
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--border-light);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.footer-badge:hover {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
 }
 
 footer a {
