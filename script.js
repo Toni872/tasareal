@@ -119,28 +119,6 @@ class CurrencyConverter {
 
         // Event listeners para botones
         clearBtn.addEventListener('click', () => this.clearAll());
-
-        // Toggle panel LATAM
-        const toggleBtn = document.getElementById('toggle-latam-rates');
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', () => this.toggleLatamPanel());
-        }
-    }
-
-    convertFromVES() {
-        const vesValue = parseFloat(document.getElementById('ves-input').value) || 0;
-
-        if (vesValue > 0) {
-            // Convertir VES a USD
-            const usdValue = vesValue / this.rates.USD;
-            document.getElementById('usd-input').value = this.formatCurrency(usdValue);
-
-            // Convertir VES a EUR
-            const eurValue = vesValue / this.rates.EUR;
-            document.getElementById('eur-input').value = this.formatCurrency(eurValue);
-        } else {
-            this.clearInputs(['usd-input', 'eur-input']);
-        }
     }
 
     convertFromUSD() {
@@ -230,22 +208,6 @@ class CurrencyConverter {
         }
     }
 
-    toggleLatamPanel() {
-        const panel = document.getElementById('latam-panel');
-        const button = document.getElementById('toggle-latam-rates');
-
-        if (panel && button) {
-            const isOpen = panel.classList.contains('open');
-
-            if (isOpen) {
-                panel.classList.remove('open');
-                button.classList.remove('active');
-            } else {
-                panel.classList.add('open');
-                button.classList.add('active');
-            }
-        }
-    }
 
     convertFromLatamCard(currencyCode) {
         // Seleccionar la moneda LATAM como base para conversiones
@@ -327,10 +289,6 @@ class CurrencyConverter {
 
 // Estado de carga para las tasas
 document.addEventListener('DOMContentLoaded', () => {
-    // Inicializar elementos (sin animación de loading)
-    const usdAmount = document.getElementById('usd-amount');
-    const eurAmount = document.getElementById('eur-amount');
-
     // Registrar Service Worker para PWA
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
@@ -359,13 +317,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currencies: 'Currencies',
             responseTime: 'Response Time',
             uptime: 'Uptime',
-            currentRates: 'Current Exchange Rates',
-            baseCurrencies: 'Base Currencies • Updated in Real-Time',
-            usd: 'United States Dollar',
-            eur: 'Euro',
-            lastUpdate: 'Last update:',
-            updateNotice: 'Exchange rates are updated periodically via ExchangeRate-API. Data is for reference purposes only.',
-            viewLatam: 'View All LATAM Currencies',
             latamTitle: 'Latin American Currencies',
             realTimeData: 'Real-Time Data',
             clickHint: 'Click to convert',
@@ -386,13 +337,6 @@ document.addEventListener('DOMContentLoaded', () => {
             currencies: 'Monedas',
             responseTime: 'Tiempo Respuesta',
             uptime: 'Disponibilidad',
-            currentRates: 'Tasas de Cambio Actuales',
-            baseCurrencies: 'Monedas Base • Actualizadas en Tiempo Real',
-            usd: 'Dólar Estadounidense',
-            eur: 'Euro',
-            lastUpdate: 'Última actualización:',
-            updateNotice: 'Las tasas de cambio se actualizan periódicamente vía ExchangeRate-API. Los datos son solo para referencia.',
-            viewLatam: 'Ver Todas las Monedas LATAM',
             latamTitle: 'Monedas Latinoamericanas',
             realTimeData: 'Datos en Tiempo Real',
             clickHint: 'Click para convertir',
@@ -457,21 +401,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.metric-label')[1].textContent = t.responseTime;
         document.querySelectorAll('.metric-label')[2].textContent = t.uptime;
         
-        // Exchange rates section
-        document.querySelector('.exchange-rates h2').textContent = t.currentRates;
-        document.querySelector('.exchange-rates .subtitle').textContent = t.baseCurrencies;
-        document.querySelectorAll('.currency-name')[0].textContent = t.usd;
-        document.querySelectorAll('.currency-name')[1].textContent = t.eur;
-        document.querySelectorAll('.update-time').forEach(el => {
-            const timeSpan = el.querySelector('span');
-            const time = timeSpan.textContent;
-            el.innerHTML = `${t.lastUpdate} <span id="${el.querySelector('span').id}">${time}</span>`;
-        });
-        document.querySelector('.update-notice').textContent = t.updateNotice;
-        
-        // LATAM button
-        document.querySelector('.btn-text').textContent = t.viewLatam;
-        
         // LATAM panel
         const panelHeader = document.querySelector('.panel-header h3');
         if (panelHeader) panelHeader.textContent = t.latamTitle;
@@ -485,13 +414,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.converter h2').textContent = t.converter;
         document.querySelector('.converter .subtitle').textContent = t.instantConversion;
         const latamTitle = document.getElementById('latam-title');
-        if (latamTitle && latamTitle.textContent === 'Select Currency') {
+        if (latamTitle && (latamTitle.textContent === 'Select Currency' || latamTitle.textContent === 'Seleccionar Moneda')) {
             latamTitle.textContent = t.selectCurrency;
         }
         const hint = document.querySelector('.hint');
         if (hint) hint.textContent = t.clickAnyCurrency;
-        document.querySelectorAll('.card-label span')[1].textContent = t.usd;
-        document.querySelectorAll('.card-label span')[2].textContent = t.eur;
         document.getElementById('clear-btn').textContent = t.clearAll;
         
         // Footer

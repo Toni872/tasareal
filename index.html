@@ -92,55 +92,8 @@
         </header>
 
         <main>
-            <!-- Tasas de Cambio Actuales -->
-            <section class="exchange-rates" id="acerca">
-                <h2>Current Exchange Rates</h2>
-                <p class="subtitle">Base Currencies • Updated in Real-Time</p>
-
-                <div class="rates-grid">
-                    <div class="rate-card" id="usd-rate">
-                        <div class="card-header">
-                            <span class="currency-code">USD</span>
-                            <span class="status-badge live">LIVE</span>
-                        </div>
-                        <div class="currency-name">United States Dollar</div>
-                        <div class="rate-value">
-                            <span class="amount" id="usd-amount">Loading...</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="update-time">Last update: <span id="usd-time">--:--</span></span>
-                        </div>
-                    </div>
-
-                    <div class="rate-card" id="eur-rate">
-                        <div class="card-header">
-                            <span class="currency-code">EUR</span>
-                            <span class="status-badge live">LIVE</span>
-                        </div>
-                        <div class="currency-name">Euro</div>
-                        <div class="rate-value">
-                            <span class="amount" id="eur-amount">Loading...</span>
-                        </div>
-                        <div class="card-footer">
-                            <span class="update-time">Last update: <span id="eur-time">--:--</span></span>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="update-notice">Exchange rates are updated periodically via ExchangeRate-API. Data is for reference purposes only.</p>
-
-                <!-- Botón para monedas LATAM -->
-                <div class="latam-toggle">
-                    <button id="toggle-latam-rates" class="toggle-button">
-                        <span class="btn-text">View All LATAM Currencies</span>
-                        <span class="btn-badge">16</span>
-                        <span class="arrow">▼</span>
-                    </button>
-                </div>
-            </section>
-
-            <!-- Panel deslizable de monedas LATAM -->
-            <section class="latam-rates-panel" id="latam-panel">
+            <!-- Panel de monedas LATAM -->
+            <section class="latam-rates-panel open" id="latam-panel">
                 <div class="panel-header">
                     <h3>Latin American Currencies</h3>
                     <span class="panel-badge">Real-Time Data</span>
