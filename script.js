@@ -434,7 +434,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Change language
     langOptions.forEach(option => {
-        option.addEventListener('click', () => {
+        option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            
             const lang = option.dataset.lang;
             if (lang !== currentLang) {
                 currentLang = lang;
@@ -450,7 +453,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Close dropdown
                 langButton.classList.remove('active');
                 langDropdown.classList.remove('show');
+            } else {
+                // Si es el mismo idioma, solo cerrar dropdown
+                langButton.classList.remove('active');
+                langDropdown.classList.remove('show');
             }
+        });
+        
+        // También manejar eventos táctiles para móvil
+        option.addEventListener('touchend', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            option.click(); // Disparar el evento click
         });
     });
 
