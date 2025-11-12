@@ -66,6 +66,8 @@ header {
     padding: 15px 0 10px 0;
     position: relative;
     flex-shrink: 0;
+    overflow: visible; /* Permitir que el dropdown se muestre fuera del header */
+    z-index: 1; /* Establecer contexto de apilamiento */
 }
 
 /* 🌐 LANGUAGE SELECTOR */
@@ -146,8 +148,11 @@ header {
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow: hidden;
+    overflow: visible; /* Cambiar a visible para mostrar todas las opciones */
     z-index: 10000; /* Aún más alto que el selector para estar por encima */
+    max-height: none; /* Asegurar que no haya límite de altura */
+    display: flex; /* Usar flex para mejor control */
+    flex-direction: column; /* Apilar opciones verticalmente */
 }
 
 .lang-dropdown.show {
@@ -1020,11 +1025,15 @@ footer a:hover {
     .lang-dropdown {
         min-width: 150px;
         max-width: calc(100vw - 16px);
-        right: 0;
-        top: calc(100% + 6px);
+        right: 0 !important;
+        top: auto !important; /* Se calculará dinámicamente con JS */
         box-shadow: var(--shadow-lg);
         z-index: 10000; /* Aún más alto que el selector */
         border-radius: 8px;
+        overflow: visible !important; /* Asegurar que todas las opciones sean visibles */
+        display: flex !important;
+        flex-direction: column;
+        position: fixed !important; /* Usar fixed en móvil para evitar problemas de overflow */
     }
     
     .lang-option {
@@ -1288,6 +1297,12 @@ footer a:hover {
         max-width: calc(100vw - 12px);
         border-radius: 6px;
         z-index: 10000; /* Asegurar que esté por encima de todo */
+        overflow: visible !important; /* Asegurar que todas las opciones sean visibles */
+        display: flex !important;
+        flex-direction: column;
+        position: fixed !important; /* Usar fixed en móvil pequeño */
+        right: 0 !important;
+        top: auto !important; /* Se calculará con JS */
     }
     
     .lang-option {

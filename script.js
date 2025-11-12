@@ -409,6 +409,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Toggle dropdown
     langButton.addEventListener('click', (e) => {
         e.stopPropagation();
+        e.preventDefault();
+        
+        const isOpen = langDropdown.classList.contains('show');
+        
+        if (!isOpen) {
+            // Calcular posición del dropdown dinámicamente
+            const buttonRect = langButton.getBoundingClientRect();
+            langDropdown.style.top = `${buttonRect.bottom + 6}px`;
+            langDropdown.style.right = `${window.innerWidth - buttonRect.right}px`;
+        }
+        
         langButton.classList.toggle('active');
         langDropdown.classList.toggle('show');
     });
