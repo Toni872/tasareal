@@ -73,7 +73,7 @@ header {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 100;
+    z-index: 9999; /* Máximo z-index para estar por encima de todo */
 }
 
 .lang-button {
@@ -145,6 +145,7 @@ header {
     transform: translateY(-10px);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    z-index: 10000; /* Aún más alto que el selector para estar por encima */
 }
 
 .lang-dropdown.show {
@@ -981,61 +982,63 @@ footer a:hover {
 
     .language-selector {
         position: absolute;
-        top: 5px;
-        right: 5px;
-        z-index: 1000; /* Asegurar que esté por encima de todo */
+        top: 3px;
+        right: 3px;
+        z-index: 9999; /* Máximo z-index para estar por encima de todo */
     }
     
     .lang-button {
-        padding: 10px 12px; /* Touch target mínimo 44x44px */
-        font-size: 12px;
-        border-width: 1.5px;
-        min-height: 44px; /* Mínimo recomendado para touch */
-        min-width: 60px; /* Ancho mínimo para legibilidad */
-        gap: 6px; /* Espacio entre icono y texto */
+        padding: 6px 10px;
+        font-size: 11px;
+        border-width: 1px;
+        min-height: 32px;
+        min-width: 48px;
+        gap: 4px;
+        border-radius: 8px;
     }
     
+    /* Ocultar icono de idioma en móvil para ahorrar espacio */
     .lang-icon {
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
+        display: none;
     }
     
     .arrow-icon {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         flex-shrink: 0;
     }
     
     #current-lang {
-        font-size: 12px;
+        font-size: 11px;
         font-weight: 700;
-        min-width: 24px; /* Asegurar espacio para "EN" o "ES" */
+        min-width: 20px;
+        letter-spacing: 0.3px;
     }
     
     .lang-dropdown {
-        min-width: 180px; /* Más estrecho para móvil */
-        max-width: calc(100vw - 20px); /* No exceder ancho de pantalla */
+        min-width: 150px;
+        max-width: calc(100vw - 16px);
         right: 0;
-        top: calc(100% + 8px);
+        top: calc(100% + 6px);
         box-shadow: var(--shadow-lg);
-        z-index: 1001;
+        z-index: 10000; /* Aún más alto que el selector */
+        border-radius: 8px;
     }
     
     .lang-option {
-        padding: 14px 16px; /* Touch target adecuado */
-        min-height: 48px; /* Mínimo para touch */
-        font-size: 14px;
-        gap: 10px;
+        padding: 12px 14px;
+        min-height: 44px;
+        font-size: 13px;
+        gap: 8px;
     }
     
     .lang-option .flag {
-        font-size: 22px; /* Más grande para mejor visibilidad */
+        font-size: 18px;
         flex-shrink: 0;
     }
     
     .lang-option span:not(.flag):not(.check) {
-        font-size: 14px;
+        font-size: 13px;
         font-weight: 500;
     }
     
@@ -1251,46 +1254,48 @@ footer a:hover {
     }
     
     .language-selector {
-        top: 4px;
-        right: 4px;
+        top: 2px;
+        right: 2px;
     }
     
     .lang-button {
-        padding: 10px 10px; /* Mantener touch target */
-        font-size: 11px;
-        min-height: 44px;
-        min-width: 55px;
-        gap: 5px;
+        padding: 5px 8px;
+        font-size: 10px;
+        min-height: 28px;
+        min-width: 42px;
+        gap: 3px;
+        border-radius: 6px;
     }
     
     .lang-icon {
-        width: 15px;
-        height: 15px;
+        display: none;
     }
     
     .arrow-icon {
-        width: 9px;
-        height: 9px;
+        width: 7px;
+        height: 7px;
     }
     
     #current-lang {
-        font-size: 11px;
-        min-width: 22px;
+        font-size: 10px;
+        min-width: 18px;
     }
     
     .lang-dropdown {
-        min-width: 160px;
-        max-width: calc(100vw - 16px);
+        min-width: 140px;
+        max-width: calc(100vw - 12px);
+        border-radius: 6px;
+        z-index: 10000; /* Asegurar que esté por encima de todo */
     }
     
     .lang-option {
-        padding: 12px 14px;
-        min-height: 48px;
-        font-size: 13px;
+        padding: 10px 12px;
+        min-height: 40px;
+        font-size: 12px;
     }
     
     .lang-option .flag {
-        font-size: 20px;
+        font-size: 16px;
     }
     
     header {
